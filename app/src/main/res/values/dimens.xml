@@ -1,0 +1,30 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <!-- size -->
+    <dimen name="size_vt">4dp</dimen>
+    <dimen name="size_t">6dp</dimen>
+    <dimen name="size_vs">8dp</dimen>
+    <dimen name="size_s">12dp</dimen>
+    <dimen name="size_n">16dp</dimen>
+    <dimen name="size_m">22dp</dimen>
+    <dimen name="size_l">26dp</dimen>
+    <dimen name="size_el">34dp</dimen>
+    <dimen name="size_h">42dp</dimen>
+    <dimen name="size_eh">52dp</dimen>
+    <dimen name="size_g">62dp</dimen>
+    <dimen name="size_i">77dp</dimen>
+    <!-- font sizes -->
+    <dimen name="font_i">45sp</dimen>
+    <dimen name="font_g">30sp</dimen>
+    <dimen name="font_eh">24sp</dimen>
+    <dimen name="font_h">22sp</dimen>
+    <dimen name="font_el">20sp</dimen>
+    <dimen name="font_l">18sp</dimen>
+    <dimen name="font_m" format="float">16sp</dimen>
+    <dimen name="font_n">14sp</dimen>
+    <dimen name="font_s">12sp</dimen>
+    <dimen name="font_vs">10sp</dimen>
+    <dimen name="font_t">6sp</dimen>
+    <dimen name="font_vt">4sp</dimen>
+
+</resources>
