@@ -23,10 +23,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_s"
-        android:fontFamily="@font/poppins"
         android:text="@string/work_less"
         android:textSize="@dimen/font_i"
         app:layout_constraintStart_toStartOf="@id/im_auth_check"
         app:layout_constraintTop_toBottomOf="@id/im_auth_check" />
+
+    <Button
+        android:id="@+id/btn_auth_google_signin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continue with google"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_auth_copy" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
