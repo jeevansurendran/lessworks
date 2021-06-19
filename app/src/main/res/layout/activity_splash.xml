@@ -10,10 +10,11 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
+        android:contentDescription="@string/our_app_logo"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_check_24px" />
+        app:srcCompat="@drawable/ic_check" />
 </android.support.constraint.ConstraintLayout>
