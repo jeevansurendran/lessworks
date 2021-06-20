@@ -5,7 +5,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserInfo
 
 open class FirebaseUserInfo(
-    private val firebaseUser: FirebaseUser?
+    val firebaseUser: FirebaseUser?
 ) {
 
     fun isSignedIn(): Boolean = firebaseUser != null

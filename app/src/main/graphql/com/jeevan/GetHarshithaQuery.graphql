@@ -1,6 +1,0 @@
-query GetHarshithaQuery {
-  user(where: {uid: {_eq: "test2"}}) {
-    name
-    uid
-  }
-}

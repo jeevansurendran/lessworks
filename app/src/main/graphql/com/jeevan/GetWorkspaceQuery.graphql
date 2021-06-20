@@ -1,0 +1,22 @@
+query GetWorkspaceQuery {
+  workspace {
+    id
+    name
+    groups {
+      id
+      name
+      group_users {
+        group_id
+        user_id
+      }
+    }
+    directs {
+      user_1 {
+        name
+      }
+      user_2 {
+        name
+      }
+    }
+  }
+}

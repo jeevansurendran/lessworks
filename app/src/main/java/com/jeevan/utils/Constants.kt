@@ -1,4 +1,5 @@
 package com.jeevan.utils
 
-class Constants {
+object Constants {
+    const val ATA_GRAPHQL_ENDPOINT = "https://ata.hasura.app/v1/graphql"
 }
