@@ -11,7 +11,6 @@ class AuthorizationInterceptor : Interceptor {
                  "lCQjGurNMnXi8ILYNreZTHVkpSNOnwFIkLKiG6JCZ0Q4CU0EKFFa65TFuB4MdsSp"
             )
             .build()
-
         return chain.proceed(request)
     }
 }

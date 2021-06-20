@@ -29,6 +29,7 @@ class AuthActivity : AppCompatActivity() {
                 try {
                     val account = task.getResult(ApiException::class.java)!!
 
+
                     // send result here
                     return@registerForActivityResult
                 } catch (e: ApiException) {
