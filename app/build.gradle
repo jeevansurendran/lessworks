@@ -22,7 +22,6 @@ android {
     }
     apollo {
         generateKotlinModels.set(true)
-        graphqlSourceDirectorySet.exclude("**/schema.graphql")
     }
     buildTypes {
         release {
@@ -39,6 +38,9 @@ android {
     }
     kapt {
         correctErrorTypes true
+    }
+    buildFeatures {
+        viewBinding = true
     }
 }
 

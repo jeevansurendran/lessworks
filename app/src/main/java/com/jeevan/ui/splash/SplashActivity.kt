@@ -1,4 +1,4 @@
-package com.jeevan
+package com.jeevan.ui.splash
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,8 @@ import androidx.lifecycle.lifecycleScope
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.coroutines.await
 import com.apollographql.apollo.exception.ApolloException
+import com.jeevan.GetHarshithaQuery
+import com.jeevan.R
 import com.jeevan.hardware.network.AuthorizationInterceptor
 import com.jeevan.utils.toast
 import okhttp3.OkHttpClient

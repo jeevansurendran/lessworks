@@ -10,8 +10,10 @@
         android:supportsRtl="true"
         android:name=".AtaApplication"
         android:theme="@style/Theme.Ata">
-        <activity android:name=".AuthActivity" />
-        <activity android:name=".SplashActivity">
+        <activity
+            android:name=".ui.auth.AuthActivity"
+            android:orientation="vertical" />
+        <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
