@@ -9,6 +9,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
 import com.jeevan.databinding.ActivityAuthBinding
 import com.jeevan.domain.auth.GoogleSignInUseCase
+import com.jeevan.ui.main.MainActivity
 import com.jeevan.utils.toast
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -29,7 +30,8 @@ class AuthActivity : AppCompatActivity() {
                 try {
                     val account = task.getResult(ApiException::class.java)!!
 
-
+                    val intent = MainActivity.launchMain(this@AuthActivity)
+                    startActivity(intent)
                     // send result here
                     return@registerForActivityResult
                 } catch (e: ApiException) {
