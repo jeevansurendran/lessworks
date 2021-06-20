@@ -30,8 +30,7 @@ class AuthActivity : AppCompatActivity() {
                 try {
                     val account = task.getResult(ApiException::class.java)!!
 
-                    val intent = MainActivity.launchMain(this@AuthActivity)
-                    startActivity(intent)
+                    launchMain()
                     // send result here
                     return@registerForActivityResult
                 } catch (e: ApiException) {
@@ -81,5 +80,11 @@ class AuthActivity : AppCompatActivity() {
     private fun setSignInEnabled() {
         viewModel.signInClicked.set(false)
         binding.btnAuthGoogleSignin.isEnabled = true
+    }
+
+    private fun launchMain() {
+        val intent = MainActivity.launchMain(this@AuthActivity)
+        startActivity(intent)
+        finish()
     }
 }
