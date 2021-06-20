@@ -1,17 +1,24 @@
 package com.jeevan.ui.auth
 
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.GoogleAuthProvider
 import com.jeevan.databinding.ActivityAuthBinding
+import com.jeevan.domain.auth.GetGoogleClientUseCase
 import com.jeevan.domain.auth.GoogleSignInUseCase
 import com.jeevan.ui.main.MainActivity
 import com.jeevan.utils.toast
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -21,7 +28,9 @@ class AuthActivity : AppCompatActivity() {
     private val viewModel by viewModels<AuthViewModel>()
 
     @Inject
-    internal lateinit var googleSignIn: GoogleSignInUseCase
+    internal lateinit var googleClient: GetGoogleClientUseCase
+    @Inject
+    internal lateinit var googleSignInUseCase: GoogleSignInUseCase
 
     private val signInResultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -29,8 +38,7 @@ class AuthActivity : AppCompatActivity() {
                 val task = GoogleSignIn.getSignedInAccountFromIntent(it.data)
                 try {
                     val account = task.getResult(ApiException::class.java)!!
-
-                    launchMain()
+                    firebaseAuthWithGoogle(account)
                     // send result here
                     return@registerForActivityResult
                 } catch (e: ApiException) {
@@ -67,7 +75,7 @@ class AuthActivity : AppCompatActivity() {
     private fun signIn() {
         if (viewModel.signInClicked.compareAndSet(false, true)) {
             binding.btnAuthGoogleSignin.isEnabled = !viewModel.signInClicked.get()
-            val googleSignInAttempt = googleSignIn(Unit)
+            val googleSignInAttempt = googleClient(Unit)
             if (googleSignInAttempt.isSuccess) {
                 val intent = googleSignInAttempt.getOrThrow().signInIntent
                 signInResultLauncher.launch(intent)
@@ -82,9 +90,22 @@ class AuthActivity : AppCompatActivity() {
         binding.btnAuthGoogleSignin.isEnabled = true
     }
 
+    private fun firebaseAuthWithGoogle(account: GoogleSignInAccount) {
+        val credential = GoogleAuthProvider.getCredential(account.idToken!!, null)
+
+        lifecycleScope.launch {
+            googleSignInUseCase(credential)
+            launchMain()
+        }
+    }
+
     private fun launchMain() {
         val intent = MainActivity.launchMain(this@AuthActivity)
         startActivity(intent)
         finish()
+    }
+
+    companion object {
+        fun launchAuth(context: Context): Intent = Intent(context, AuthActivity::class.java)
     }
 }

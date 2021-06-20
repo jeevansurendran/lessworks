@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/red_200</item>
         <item name="colorPrimaryVariant">@color/red_500</item>
         <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/red_500</item>
         <!-- Customize your theme here. -->
         <item name="android:textColor">@color/gray_700</item>
         <item name="fontFamily">@font/poppins</item>

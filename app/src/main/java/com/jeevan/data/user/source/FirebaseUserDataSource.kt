@@ -10,8 +10,8 @@ import kotlinx.coroutines.flow.channelFlow
 import kotlinx.coroutines.isActive
 import javax.inject.Inject
 
-class FirebaseUserDataSource @Inject constructor(val auth: FirebaseAuth) {
-    fun getObservableFirebaseUser(): Flow<FirebaseUserInfo> {
+class FirebaseUserDataSource @Inject constructor(private val auth: FirebaseAuth) {
+    fun getFlowFirebaseUser(): Flow<FirebaseUserInfo> {
         return channelFlow {
             val authStateListener: ((FirebaseAuth) -> Unit) = { auth ->
                 if (isActive) {

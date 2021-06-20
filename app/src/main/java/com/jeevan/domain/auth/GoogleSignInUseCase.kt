@@ -1,24 +1,20 @@
 package com.jeevan.domain.auth
 
-import android.content.Context
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.jeevan.R
-import com.jeevan.domain.BaseUseCase
-import dagger.hilt.android.qualifiers.ApplicationContext
+import com.google.firebase.auth.AuthCredential
+import com.google.firebase.auth.FirebaseAuth
+import com.jeevan.di.MainDispatcher
+import com.jeevan.domain.UseCase
+import com.jeevan.utils.suspendAndWait
+import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
 class GoogleSignInUseCase @Inject constructor(
-    @ApplicationContext private val context: Context
+    private val firebaseAuth: FirebaseAuth,
+    @MainDispatcher dispatcher: CoroutineDispatcher
 ) :
-    BaseUseCase<Unit, GoogleSignInClient>() {
-    override fun execute(parameters: Unit): GoogleSignInClient {
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(context.getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-        return GoogleSignIn.getClient(context, gso)
+    UseCase<AuthCredential, Unit>(dispatcher) {
+    override suspend fun execute(parameters: AuthCredential) {
+        firebaseAuth.signInWithCredential(parameters).suspendAndWait()
     }
 
 }
