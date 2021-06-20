@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "192188659491",
+    "project_id": "another-task-app",
+    "storage_bucket": "another-task-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192188659491:android:ff9a95da62370e5346fe96",
+        "android_client_info": {
+          "package_name": "com.jeevan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "192188659491-7ch8urpjs5ktfda233g6cm67n3bmgu2u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jeevan",
+            "certificate_hash": "965e800cab527892a2c0e6518bdbbadb43c6bc84"
+          }
+        },
+        {
+          "client_id": "192188659491-fnvsjq10r16sko8imkm7289mprdggihl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdJmX5QQn1aMf6eHvjxMflEds6dLs0DeI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "192188659491-fnvsjq10r16sko8imkm7289mprdggihl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
