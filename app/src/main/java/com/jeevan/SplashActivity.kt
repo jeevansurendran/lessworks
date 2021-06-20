@@ -6,6 +6,7 @@ import androidx.lifecycle.lifecycleScope
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.coroutines.await
 import com.apollographql.apollo.exception.ApolloException
+import com.jeevan.hardware.network.AuthorizationInterceptor
 import com.jeevan.utils.toast
 import okhttp3.OkHttpClient
 
