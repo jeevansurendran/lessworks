@@ -21,31 +21,10 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    @Inject
-    internal lateinit var apolloClient: ApolloClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        binding.btnMainFetch.setOnClickListener {
-            lifecycleScope.launch {
-                val response = try {
-                    apolloClient.query(GetWorkspaceQuery()).await()
-                } catch (e: ApolloException) {
-                    // handle protocol errors
-                    return@launch
-                }
-
-                val launch = response.data?.toJson(indent = "\t\t")
-                if (launch == null || response.hasErrors()) {
-                    // handle application errors
-                    return@launch
-                }
-                Timber.d(launch)
-            }
-        }
-
     }
 
     companion object {
