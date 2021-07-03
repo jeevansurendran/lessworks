@@ -6,14 +6,91 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainWorkspaceFragment">
 
-    <TextView
-        android:id="@+id/textView"
+    <View
+        android:id="@+id/divider_main"
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:background="@color/gray_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cl_workspace_accounts"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cl_workspace_accounts"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/size_l"
+        android:padding="@dimen/size_s"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_workspace_logo" />
+
+    <FrameLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="\@harshitha workspace switching logic goes here"
-        android:textAlignment="center"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/size_l"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/divider_main"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+<!--        <androidx.core.widget.NestedScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="@dimen/size_s">
+
+                <TextView
+                    android:id="@+id/tv_workspace_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_n"
+                    android:fontFamily="@font/manrope_bold"
+                    android:textSize="@dimen/font_l"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Jeevan's Workspace" />
+
+                <TextView
+                    android:id="@+id/tv_workspace_group_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_l"
+                    android:text="Group Tasks"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_workspace_name" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_workspace_group"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="@dimen/size_s"
+                    tools:itemCount="4"
+                    tools:listitem="@layout/item_workspace_room"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_workspace_group_heading" />
+
+                <ImageView
+                    android:id="@+id/im_workspace_group_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_plus"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_workspace_group_heading"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_workspace_group_heading" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+<!--        </androidx.core.widget.NestedScrollView>-->
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
