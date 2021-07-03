@@ -1,4 +1,4 @@
-query GetWorkspaceQuery {
+query GetWorkspacesQuery {
   workspace {
     id
     name
@@ -8,14 +8,6 @@ query GetWorkspaceQuery {
       group_users {
         group_id
         user_id
-      }
-    }
-    directs {
-      user_1 {
-        name
-      }
-      user_2 {
-        name
       }
     }
   }

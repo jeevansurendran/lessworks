@@ -55,6 +55,7 @@ dependencies {
     // apollo
     implementation("com.apollographql.apollo:apollo-runtime:$apollo_version")
     implementation("com.apollographql.apollo:apollo-coroutines-support:$apollo_version")
+    implementation "com.squareup.okhttp3:logging-interceptor:4.7.2"
 
     // coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0-RC'
