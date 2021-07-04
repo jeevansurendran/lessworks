@@ -8,19 +8,20 @@
 
     <View
         android:id="@+id/divider_main"
-        android:layout_width="2dp"
+        android:layout_width="1dp"
         android:layout_height="0dp"
         android:background="@color/gray_200"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/cl_workspace_accounts"
+        app:layout_constraintStart_toEndOf="@id/rv_workspaces"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/cl_workspace_accounts"
+        android:id="@+id/rv_workspaces"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/size_l"
         android:padding="@dimen/size_s"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -37,7 +38,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/cpi_loading"
             android:layout_width="wrap_content"
+            android:indeterminate="true"
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
 
@@ -46,6 +49,7 @@
 <!--            android:layout_height="match_parent">-->
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_workspace_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingHorizontal="@dimen/size_s">
@@ -56,7 +60,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/size_n"
                     android:fontFamily="@font/manrope_bold"
-                    android:textSize="@dimen/font_l"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/font_el"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Jeevan's Workspace" />
@@ -66,6 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/size_l"
+                    android:textStyle="bold"
                     android:text="Group Tasks"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_workspace_name" />
@@ -77,6 +83,7 @@
                     tools:itemCount="4"
                     tools:listitem="@layout/item_workspace_room"
                     android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_workspace_group_heading" />

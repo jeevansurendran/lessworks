@@ -2,8 +2,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="50dp"
-    android:layout_height="50dp"
+    android:layout_width="45dp"
+    android:layout_height="45dp"
     android:layout_marginVertical="@dimen/size_vt"
     app:cardCornerRadius="8dp"
     app:cardElevation="0dp">
@@ -12,5 +12,5 @@
         android:id="@+id/im_workspace_logo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:background="@color/red_500" />
+        android:background="@color/red_500" />
 </androidx.cardview.widget.CardView>

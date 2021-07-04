@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class WorkspaceDataSource @Inject constructor(private val apolloClient: ApolloClient) {
 
-    suspend fun provideWorkspacesData(): List<GetWorkspacesQuery.Workspace> {
+    suspend fun getWorkspacesData(): List<GetWorkspacesQuery.Workspace> {
         val response = apolloClient.query(GetWorkspacesQuery()).await()
         return response.data?.workspace ?: emptyList()
     }

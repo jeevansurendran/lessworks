@@ -10,15 +10,7 @@ import timber.log.Timber
 
 class AuthInterceptor(firebaseUserDataSource: FirebaseUserDataSource) : Interceptor {
     var idToken = ""
-    init {
-        GlobalScope.launch {
-            firebaseUserDataSource.getFlowFirebaseIdToken().collect {
-                if (it != null) {
-                    idToken = it
-                }
-            }
-        }
-    }
+
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request().newBuilder()
             .addHeader(
