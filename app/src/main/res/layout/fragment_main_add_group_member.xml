@@ -7,10 +7,10 @@
     android:paddingHorizontal="@dimen/size_s"
     android:paddingTop="@dimen/size_s"
     android:paddingBottom="@dimen/size_el"
-    tools:context=".ui.createWorkspace.MainCreateGroupFragment">
+    tools:context=".ui.createWorkspace.AddGroupMembersFragment">
 
     <com.jeevan.ui.custom.IconButton
-        android:id="@+id/ib_create_group_next"
+        android:id="@+id/ib_add_group_member_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_forward_ios"
@@ -18,39 +18,51 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/ib_create_group_close"
+        android:id="@+id/ib_add_group_member_close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/transparent"
         android:src="@drawable/ic_close"
-        app:layout_constraintBottom_toBottomOf="@id/ib_create_group_next"
+        app:layout_constraintBottom_toBottomOf="@id/ib_add_group_member_next"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/ib_create_group_next" />
+        app:layout_constraintTop_toTopOf="@id/ib_add_group_member_next" />
 
     <TextView
-        android:id="@+id/tv_create_group_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_s"
         android:text="Create a group"
-        app:layout_constraintBottom_toBottomOf="@id/ib_create_group_close"
-        app:layout_constraintStart_toEndOf="@id/ib_create_group_close"
-        app:layout_constraintTop_toTopOf="@id/ib_create_group_close" />
+        app:layout_constraintBottom_toBottomOf="@id/ib_add_group_member_close"
+        app:layout_constraintStart_toEndOf="@id/ib_add_group_member_close"
+        app:layout_constraintTop_toTopOf="@id/ib_add_group_member_close" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_create_group_name"
+        android:id="@+id/til_add_group_member_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_m"
-        android:hint="Group name example: Design sync"
+        android:hint="Search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ib_create_group_close">
+        app:layout_constraintTop_toBottomOf="@id/ib_add_group_member_close">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_add_group_member_names"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:listitem="@layout/item_add_group_member"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/size_s"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_add_group_member_search" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 

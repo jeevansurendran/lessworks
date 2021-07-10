@@ -16,5 +16,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_check" />
+        app:srcCompat="@drawable/ic_check"
+        app:tint="@color/white" />
 </androidx.constraintlayout.widget.ConstraintLayout>

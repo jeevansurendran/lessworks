@@ -16,11 +16,19 @@
     </fragment>
     <dialog
         android:id="@+id/mainCreateGroupFragment"
-        android:name="com.jeevan.ui.main.MainCreateGroupFragment"
+        android:name="com.jeevan.ui.createWorkspace.MainCreateGroupFragment"
         android:label="fragment_main_create_group"
         tools:layout="@layout/fragment_main_create_group" >
         <argument
             android:name="workspaceId"
             app:argType="string" />
+        <action
+            android:id="@+id/add_members"
+            app:destination="@id/addGroupMembersFragment" />
     </dialog>
+    <fragment
+        android:id="@+id/addGroupMembersFragment"
+        android:name="com.jeevan.ui.createWorkspace.AddGroupMembersFragment"
+        android:label="fragment_main_add_group_member"
+        tools:layout="@layout/fragment_main_add_group_member" />
 </navigation>
