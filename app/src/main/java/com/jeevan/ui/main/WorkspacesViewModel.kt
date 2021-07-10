@@ -16,7 +16,7 @@ class WorkspacesViewModel @Inject constructor(private val getWorkspaces: GetWork
     val workspaces = MutableLiveData<Result<List<Workspace>>?>()
 
     val selectedWorkspace = workspaces.map {
-        return@map it?.map {it.takeIf { it.isNotEmpty() }?.first() }
+        return@map it?.map { it.takeIf { it.isNotEmpty() }?.first() }
     }
 
     fun getWorkspaces() {
