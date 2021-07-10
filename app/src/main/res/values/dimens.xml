@@ -1,6 +1,7 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <!-- size -->
+    <dimen name="size_u">1dp</dimen>
     <dimen name="size_vt">4dp</dimen>
     <dimen name="size_t">6dp</dimen>
     <dimen name="size_vs">8dp</dimen>

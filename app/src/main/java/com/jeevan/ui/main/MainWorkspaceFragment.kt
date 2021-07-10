@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.jeevan.R
 import com.jeevan.databinding.FragmentMainWorkspaceBinding
-import com.jeevan.utils.toast
 import com.xwray.groupie.GroupieAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -53,6 +53,13 @@ class MainWorkspaceFragment: Fragment(R.layout.fragment_main_workspace) {
         binding.rvWorkspaces.adapter = GroupieAdapter()
         binding.rvWorkspaceGroup.adapter = GroupieAdapter()
 
+        binding.imWorkspaceGroupAdd.setOnClickListener {
+            workspacesViewModel.selectedWorkspace.value?.getOrNull()?.let {
+                val directions = MainWorkspaceFragmentDirections.createGroup(it.id.toString())
+                findNavController().navigate(directions)
+            }
+
+        }
         setLoading(binding)
 
     }

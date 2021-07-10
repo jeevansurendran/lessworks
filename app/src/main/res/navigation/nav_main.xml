@@ -9,5 +9,18 @@
         android:id="@+id/mainWorkspaceFragment"
         android:name="com.jeevan.ui.main.MainWorkspaceFragment"
         android:label="fragment_main_workspace"
-        tools:layout="@layout/fragment_main_workspace" />
+        tools:layout="@layout/fragment_main_workspace" >
+        <action
+            android:id="@+id/create_group"
+            app:destination="@id/mainCreateGroupFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/mainCreateGroupFragment"
+        android:name="com.jeevan.ui.main.MainCreateGroupFragment"
+        android:label="fragment_main_create_group"
+        tools:layout="@layout/fragment_main_create_group" >
+        <argument
+            android:name="workspaceId"
+            app:argType="string" />
+    </dialog>
 </navigation>

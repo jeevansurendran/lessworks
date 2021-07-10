@@ -1,0 +1,10 @@
+mutation InsertGroupMutation($workspaceId: uuid!, $name: String) {
+  insert_group_one(object: {name: $name, workspace_id: $workspaceId, group_users: {data: [{}]}}) {
+    id
+    workspace_id
+    group_users {
+      group_id
+      user_id
+    }
+  }
+}

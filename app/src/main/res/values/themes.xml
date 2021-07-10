@@ -8,7 +8,7 @@
         <item name="colorPrimaryDark">@color/red_500</item>
         <!-- Customize your theme here. -->
         <item name="android:textColor">@color/gray_700</item>
-        <item name="fontFamily">@font/manrope</item>
-        <item name="android:textSize">@dimen/font_n</item>
+        <item name="fontFamily">@font/manrope_bold</item>
+        <item name="android:textSize">@dimen/font_m</item>
     </style>
 </resources>
