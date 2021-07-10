@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.group.MainGroupFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -191,7 +192,6 @@
                     android:layout_width="wrap_content"
                     app:layout_constraintHorizontal_bias="0.7"
                     android:layout_height="wrap_content"
-                    android:margins="-48dp"
                     app:layout_constraintEnd_toStartOf="@+id/iconButton"
                     app:layout_constraintStart_toStartOf="@+id/tv_group_successful2"
                     app:layout_constraintTop_toBottomOf="@+id/tv_group_successful2"

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/create_group"
             app:destination="@id/mainCreateGroupFragment" />
+        <action
+            android:id="@+id/open_group"
+            app:destination="@id/mainGroupFragment" />
     </fragment>
     <dialog
         android:id="@+id/mainCreateGroupFragment"
@@ -31,4 +34,13 @@
         android:name="com.jeevan.ui.createWorkspace.AddGroupMembersFragment"
         android:label="fragment_main_add_group_member"
         tools:layout="@layout/fragment_main_add_group_member" />
+    <fragment
+        android:id="@+id/mainGroupFragment"
+        android:name="com.jeevan.ui.group.MainGroupFragment"
+        android:label="MainGroupFragment"
+        tools:layout="@layout/fragment_main_group">
+        <argument
+            android:name="group_id"
+            app:argType="string" />
+    </fragment>
 </navigation>
