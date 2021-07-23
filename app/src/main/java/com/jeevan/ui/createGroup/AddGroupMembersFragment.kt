@@ -76,6 +76,16 @@ class AddGroupMembersFragment :
                 }
             }
         }
+        addGroupMembersViewModel.addGroupResult.observe(viewLifecycleOwner) {
+            it?.let {
+                if(it.isSuccess) {
+                    it.getOrNull()?.also {
+                        dismiss()
+                        binding.ibAddGroupMemberNext.isEnabled = true
+                    }
+                }
+            }
+        }
     }
 
     private fun setupListeners(binding: FragmentMainAddGroupMemberBinding) {
@@ -90,6 +100,8 @@ class AddGroupMembersFragment :
         }
         setMembersCount(binding)
         binding.ibAddGroupMemberNext.setOnClickListener {
+            binding.ibAddGroupMemberNext.isEnabled = false
+            addGroupMembersViewModel.addGroup(args.workspaceId, args.groupName)
 
         }
     }

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jeevan.SearchUserQuery
+import com.jeevan.domain.auth.GetAuthUserFlowCase
 import com.jeevan.domain.user.SearchUsersUseCase
 import com.jeevan.domain.workspace.AddGroupUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,10 +14,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AddGroupMembersViewModel @Inject constructor(
+    private val getAuthUserFlowCase: GetAuthUserFlowCase,
     private val searchUsers: SearchUsersUseCase,
     private val addGroup: AddGroupUseCase
 ) :
     ViewModel() {
+
     private val _searchUsersResult = MutableLiveData<Result<List<SearchUserQuery.User>>>()
     val searchUsersResult = _searchUsersResult as LiveData<Result<List<SearchUserQuery.User>>>
 
@@ -31,7 +34,7 @@ class AddGroupMembersViewModel @Inject constructor(
         }
     }
 
-    fun addWorkspace(workspaceId: String, name: String) {
+    fun addGroup(workspaceId: String, name: String) {
         viewModelScope.launch {
             _addGroupResult.value = addGroup(Triple(workspaceId, name, usersList))!!
         }
