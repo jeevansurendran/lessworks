@@ -8,4 +8,8 @@ class WorkspaceRepository @Inject constructor(private val workspaceDataSource: W
     suspend fun getWorkspacesRepository(): List<Workspace> {
         return workspaceDataSource.getWorkspacesData()
     }
+
+    suspend fun addGroup(workspaceId: String, name: String, users: List<String>): String {
+        return workspaceDataSource.addGroup(workspaceId, name, users)
+    }
 }

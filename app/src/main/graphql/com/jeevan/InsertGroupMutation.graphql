@@ -1,5 +1,5 @@
-mutation InsertGroupMutation($workspaceId: uuid!, $name: String) {
-  insert_group_one(object: {name: $name, workspace_id: $workspaceId, group_users: {data: [{}]}}) {
+mutation InsertGroupMutation($workspaceId: uuid!, $name: String, $users: [group_user_insert_input!]!) {
+  insert_group_one(object: {name: $name, workspace_id: $workspaceId, group_users: {data: $users, on_conflict: {constraint: group_user_pkey, update_columns: [user_id]}}}) {
     id
     workspace_id
     group_users {

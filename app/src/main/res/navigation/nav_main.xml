@@ -27,7 +27,9 @@
             app:argType="string" />
         <action
             android:id="@+id/add_members"
-            app:destination="@id/addGroupMembersFragment" />
+            app:destination="@id/addGroupMembersFragment"
+            app:popUpTo="@id/mainCreateGroupFragment"
+            app:popUpToInclusive="true" />
     </dialog>
     <dialog
         android:id="@+id/addGroupMembersFragment"

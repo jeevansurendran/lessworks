@@ -89,10 +89,13 @@ class AddGroupMembersFragment :
                 }
         }
         setMembersCount(binding)
+        binding.ibAddGroupMemberNext.setOnClickListener {
+
+        }
     }
 
     private fun setMembersCount(binding: FragmentMainAddGroupMemberBinding) {
-        binding.tvAddGroupMemberCount.text = "${addGroupMembersViewModel.usersList.size} Members"
+        binding.tvAddGroupMemberCount.text = "(${addGroupMembersViewModel.usersList.size} Members)"
     }
 
 }

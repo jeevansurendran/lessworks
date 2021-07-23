@@ -17,6 +17,6 @@ class SearchUsersUseCase @Inject constructor(
         if (parameters.length < GROUP_MEMBER_SEARCH_LENGTH) {
             return emptyList()
         }
-        return userRepository.searchUsers(parameters)
+        return userRepository.searchUsers(parameters.trim())
     }
 }
