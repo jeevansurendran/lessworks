@@ -1,0 +1,5 @@
+query SearchUserQuery($query: String!) {
+  user(where: {name: {_ilike: $query}}) {
+    ...user
+  }
+}

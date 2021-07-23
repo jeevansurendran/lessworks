@@ -8,7 +8,7 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import timber.log.Timber
 
-class AuthInterceptor(firebaseUserDataSource: FirebaseUserDataSource) : Interceptor {
+class AuthInterceptor() : Interceptor {
     var idToken = ""
 
     override fun intercept(chain: Interceptor.Chain): Response {

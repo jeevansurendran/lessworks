@@ -21,8 +21,8 @@ object ApolloModule {
 
     @Singleton
     @Provides
-    fun provideAuthInterceptor(firebaseUserDataSource: FirebaseUserDataSource): AuthInterceptor {
-        return AuthInterceptor(firebaseUserDataSource)
+    fun provideAuthInterceptor(): AuthInterceptor {
+        return AuthInterceptor()
     }
 
     @Singleton

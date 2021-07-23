@@ -46,7 +46,6 @@ class MainWorkspaceFragment: Fragment(R.layout.fragment_main_workspace) {
                 }
             }
         }
-        workspacesViewModel.getWorkspaces()
     }
 
     private fun setupListeners(binding: FragmentMainWorkspaceBinding) {

@@ -10,5 +10,10 @@ query GetWorkspacesQuery {
         user_id
       }
     }
+    workspace_users {
+      user {
+        ...user
+      }
+    }
   }
 }
