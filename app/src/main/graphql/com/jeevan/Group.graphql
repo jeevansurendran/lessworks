@@ -1,0 +1,8 @@
+fragment group on group {
+    id
+    name
+    group_users {
+        user_id
+        group_id
+    }
+}

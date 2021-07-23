@@ -3,12 +3,7 @@ query GetWorkspacesQuery {
     id
     name
     groups {
-      id
-      name
-      group_users {
-        group_id
-        user_id
-      }
+        ...group
     }
     workspace_users {
       user {

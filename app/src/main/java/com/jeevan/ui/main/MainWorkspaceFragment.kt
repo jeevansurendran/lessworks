@@ -27,9 +27,10 @@ class MainWorkspaceFragment: Fragment(R.layout.fragment_main_workspace) {
         workspacesViewModel.workspaces.observe(viewLifecycleOwner) {
             it?.let { result ->
                 if(result.isSuccess) {
-                    val adapter = binding.rvWorkspaces.adapter as GroupieAdapter // not so safe but is ok
+                    val workspacesAdapter =
+                        binding.rvWorkspaces.adapter as GroupieAdapter // not so safe but is ok
                     result.getOrNull()?.let {
-                        adapter.replaceAll(it.map {
+                        workspacesAdapter.replaceAll(it.map {
                             WorkspaceItem()
                         })
                     }
@@ -39,9 +40,13 @@ class MainWorkspaceFragment: Fragment(R.layout.fragment_main_workspace) {
         workspacesViewModel.selectedWorkspace.observe(viewLifecycleOwner) {
             it?.let { result ->
                 if(result.isSuccess) {
+                    val groupAdapter = binding.rvWorkspaceGroup.adapter as GroupieAdapter
                     setLoading(binding, false)
                     result.getOrNull()?.let {
                         binding.tvWorkspaceName.text = it.name
+                        groupAdapter.replaceAll(it.groups.map {
+                            GroupItem(it.fragments.group)
+                        })
                     }
                 }
             }

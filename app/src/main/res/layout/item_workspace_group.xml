@@ -18,7 +18,7 @@
             android:id="@+id/im_room_logo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:background="@color/gray_500" />
+            android:background="@color/gray_500" />
     </androidx.cardview.widget.CardView>
 
     <TextView

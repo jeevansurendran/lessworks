@@ -14,7 +14,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AddGroupMembersViewModel @Inject constructor(
-    private val getAuthUserFlowCase: GetAuthUserFlowCase,
     private val searchUsers: SearchUsersUseCase,
     private val addGroup: AddGroupUseCase
 ) :
