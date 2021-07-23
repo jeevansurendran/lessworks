@@ -40,6 +40,10 @@
             app:argType="string" />
         <argument android:name="groupName"
             app:argType="string" />
+        <action
+            android:id="@+id/open_group"
+            app:destination="@id/mainGroupFragment"
+            app:popUpTo="@id/mainWorkspaceFragment" />
     </dialog>
     <fragment
         android:id="@+id/mainGroupFragment"

@@ -6,9 +6,10 @@ import com.jeevan.databinding.ItemWorkspaceGroupBinding
 import com.jeevan.fragment.Group
 import com.xwray.groupie.viewbinding.BindableItem
 
-class GroupItem(private val group: Group) : BindableItem<ItemWorkspaceGroupBinding>() {
+class GroupItem(private val group: Group, private val onClick:(View) -> (Unit)) : BindableItem<ItemWorkspaceGroupBinding>() {
     override fun bind(viewBinding: ItemWorkspaceGroupBinding, position: Int) {
         viewBinding.tvRoomName.text = group.name
+        viewBinding.root.setOnClickListener(onClick)
     }
 
     override fun getLayout(): Int {

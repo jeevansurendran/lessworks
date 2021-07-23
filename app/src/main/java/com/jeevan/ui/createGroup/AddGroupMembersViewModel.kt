@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jeevan.SearchUserQuery
-import com.jeevan.domain.auth.GetAuthUserFlowCase
 import com.jeevan.domain.user.SearchUsersUseCase
 import com.jeevan.domain.workspace.AddGroupUseCase
+import com.jeevan.fragment.Group
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,8 +22,8 @@ class AddGroupMembersViewModel @Inject constructor(
     private val _searchUsersResult = MutableLiveData<Result<List<SearchUserQuery.User>>>()
     val searchUsersResult = _searchUsersResult as LiveData<Result<List<SearchUserQuery.User>>>
 
-    private val _addGroupResult = MutableLiveData<Result<String>>()
-    val addGroupResult = _addGroupResult as LiveData<Result<String>>
+    private val _addGroupResult = MutableLiveData<Result<Group>>()
+    val addGroupResult = _addGroupResult as LiveData<Result<Group>>
 
     val usersList = mutableSetOf<String>()
 

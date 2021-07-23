@@ -32,6 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_s"
+        android:fontFamily="@font/manrope_bold"
         android:text="Create a group"
         app:layout_constraintBottom_toBottomOf="@id/im_add_group_member_close"
         app:layout_constraintStart_toEndOf="@id/im_add_group_member_close"
@@ -49,7 +50,9 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" >
+            <requestFocus />
+        </com.google.android.material.textfield.TextInputEditText>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -71,7 +74,7 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
-        android:layout_marginHorizontal="@dimen/size_s"
+        android:layout_marginHorizontal="@dimen/size_vs"
         android:text="(0 Members)"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toStartOf="@+id/ib_add_group_member_next"

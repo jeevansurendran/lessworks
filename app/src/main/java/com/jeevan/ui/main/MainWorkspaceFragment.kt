@@ -44,8 +44,10 @@ class MainWorkspaceFragment: Fragment(R.layout.fragment_main_workspace) {
                     setLoading(binding, false)
                     result.getOrNull()?.let {
                         binding.tvWorkspaceName.text = it.name
-                        groupAdapter.replaceAll(it.groups.map {
-                            GroupItem(it.fragments.group)
+                        groupAdapter.replaceAll(it.groups.map { group ->
+                            GroupItem(group.fragments.group) {
+                                openGroup(group.fragments.group.id as String)
+                            }
                         })
                     }
                 }
@@ -69,13 +71,18 @@ class MainWorkspaceFragment: Fragment(R.layout.fragment_main_workspace) {
     }
 
     private fun setLoading(binding: FragmentMainWorkspaceBinding, isLoading: Boolean = true) {
-        if(isLoading) {
+        if (isLoading) {
             binding.clWorkspaceContainer.visibility = View.INVISIBLE
             binding.cpiLoading.visibility = View.VISIBLE
         } else {
             binding.clWorkspaceContainer.visibility = View.VISIBLE
             binding.cpiLoading.visibility = View.GONE
         }
+    }
+
+    private fun openGroup(groupId: String) {
+        val action = MainWorkspaceFragmentDirections.openGroup(groupId)
+        findNavController().navigate(action)
     }
 
 }

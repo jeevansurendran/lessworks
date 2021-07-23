@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.jeevan.R
 import com.jeevan.databinding.FragmentMainAddGroupMemberBinding
@@ -82,6 +83,8 @@ class AddGroupMembersFragment :
                     it.getOrNull()?.also {
                         dismiss()
                         binding.ibAddGroupMemberNext.isEnabled = true
+                        mainViewModel.addGroup(args.workspaceId, it)
+                        openGroup(it.id as String)
                     }
                 }
             }
@@ -108,6 +111,11 @@ class AddGroupMembersFragment :
 
     private fun setMembersCount(binding: FragmentMainAddGroupMemberBinding) {
         binding.tvAddGroupMemberCount.text = "(${addGroupMembersViewModel.usersList.size} Members)"
+    }
+
+    private fun openGroup(groupId: String) {
+        val action = AddGroupMembersFragmentDirections.openGroup(groupId)
+        findNavController().navigate(action)
     }
 
 }

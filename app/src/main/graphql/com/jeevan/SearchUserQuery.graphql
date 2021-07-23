@@ -1,5 +1,5 @@
 query SearchUserQuery($query: String!) {
-  user(where: {name: {_ilike: $query}}) {
+  user(where: {name: {_ilike: $query}}, limit: 50) {
     ...user
   }
 }

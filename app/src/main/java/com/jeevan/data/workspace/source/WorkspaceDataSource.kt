@@ -5,6 +5,7 @@ import com.apollographql.apollo.api.Input
 import com.apollographql.apollo.coroutines.await
 import com.jeevan.GetWorkspacesQuery
 import com.jeevan.InsertGroupMutation
+import com.jeevan.fragment.Group
 import com.jeevan.type.Group_user_insert_input
 import javax.inject.Inject
 
@@ -15,14 +16,14 @@ class WorkspaceDataSource @Inject constructor(private val apolloClient: ApolloCl
         return response.data?.workspace ?: emptyList()
     }
 
-    suspend fun addGroup(workspaceId: String, name: String, users: List<String>): String {
+    suspend fun addGroup(workspaceId: String, name: String, users: List<String>): Group {
         val response = apolloClient.mutate(
             InsertGroupMutation(
                 workspaceId,
                 Input.fromNullable(name),
                 users.map { Group_user_insert_input(user_id = Input.fromNullable(it)) })
         ).await()
-        return response.data?.insert_group_one?.id as String
+        return response.data?.insert_group_one?.fragments?.group!!
     }
 
 }

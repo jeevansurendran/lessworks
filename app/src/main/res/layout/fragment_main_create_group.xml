@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_s"
         android:text="Create a group"
+        android:fontFamily="@font/manrope_bold"
         app:layout_constraintBottom_toBottomOf="@id/ib_create_group_close"
         app:layout_constraintStart_toEndOf="@id/ib_create_group_close"
         app:layout_constraintTop_toTopOf="@id/ib_create_group_close" />
@@ -49,7 +50,9 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" >
+            <requestFocus />
+        </com.google.android.material.textfield.TextInputEditText>
 
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
