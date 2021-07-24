@@ -53,5 +53,13 @@
         <argument
             android:name="group_id"
             app:argType="string" />
+        <action
+            android:id="@+id/add_task"
+            app:destination="@id/mainCreateTaskFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/mainCreateTaskFragment"
+        android:name="com.jeevan.ui.createTask.MainCreateTaskFragment"
+        android:label="BottomSheetDialogFragment2"
+        tools:layout="@layout/fragment_main_create_task" />
 </navigation>

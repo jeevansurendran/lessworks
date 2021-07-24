@@ -23,7 +23,7 @@
     <dimen name="font_l">18sp</dimen>
     <dimen name="font_m" format="float">16sp</dimen>
     <dimen name="font_n">14sp</dimen>
-    <dimen name="font_s">12sp</dimen>
+    <dimen name="font_s">13sp</dimen>
     <dimen name="font_vs">10sp</dimen>
     <dimen name="font_t">6sp</dimen>
     <dimen name="font_vt">4sp</dimen>

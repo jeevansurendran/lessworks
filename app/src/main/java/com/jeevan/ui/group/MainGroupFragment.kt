@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.jeevan.R
 import com.jeevan.databinding.FragmentMainGroupBinding
@@ -21,11 +22,18 @@ class MainGroupFragment: Fragment(R.layout.fragment_main_group) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val binding = FragmentMainGroupBinding.bind(view)
-        setupViews(binding)
         setupObservers(binding)
+        setupViews(binding)
     }
 
-    fun setupObservers(binding: FragmentMainGroupBinding) {
+    private fun setupViews(binding: FragmentMainGroupBinding) {
+        binding.ibGroupCreateTask.setOnClickListener {
+            val action = MainGroupFragmentDirections.addTask()
+            findNavController().navigate(action)
+        }
+    }
+
+    private fun setupObservers(binding: FragmentMainGroupBinding) {
         groupViewModel.group.observe(viewLifecycleOwner) {
             if (it.isSuccess) {
                 it.getOrNull()?.let {
@@ -50,11 +58,7 @@ class MainGroupFragment: Fragment(R.layout.fragment_main_group) {
         }
     }
 
-    fun setupViews(binding: FragmentMainGroupBinding) {
-
-    }
-
-    fun setupTasks(binding: FragmentMainGroupBinding, list: List<Task>) {
+    private fun setupTasks(binding: FragmentMainGroupBinding, list: List<Task>) {
         if (list.isEmpty()) {
             binding.hsvGroupFilter.visibility = View.GONE
             binding.nsvGroupTasks.visibility = View.GONE

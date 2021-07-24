@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/size_s"
+    android:paddingTop="@dimen/size_s"
+    android:paddingBottom="@dimen/size_el"
+    tools:context=".ui.createTask.MainCreateTaskFragment">
+
+    <com.jeevan.ui.custom.IconButton
+        android:id="@+id/ib_create_task_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_plus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ib_create_task_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
+        android:src="@drawable/ic_close"
+        app:layout_constraintBottom_toBottomOf="@id/ib_create_task_next"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ib_create_task_next" />
+
+    <TextView
+        android:id="@+id/tv_create_task_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_s"
+        android:fontFamily="@font/manrope_bold"
+        android:text="Create a new task"
+        app:layout_constraintBottom_toBottomOf="@id/ib_create_task_close"
+        app:layout_constraintStart_toEndOf="@id/ib_create_task_close"
+        app:layout_constraintTop_toTopOf="@id/ib_create_task_close" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_create_task_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_m"
+        android:hint="Your Task goes here >>>>>"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ib_create_task_close">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <requestFocus />
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/im_create_task_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_s"
+        android:layout_marginTop="@dimen/size_n"
+        android:src="@drawable/ic_alarm_add"
+        app:layout_constraintStart_toStartOf="@+id/til_create_task_name"
+        app:layout_constraintTop_toBottomOf="@+id/til_create_task_name" />
+
+    <TextView
+        android:id="@+id/tv_create_task_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_s"
+        android:fontFamily="@font/manrope_bold"
+        android:text="Add a Deadline"
+        android:textColor="@color/gray_600"
+        android:textSize="@dimen/font_s"
+        app:layout_constraintBottom_toBottomOf="@id/im_create_task_time"
+        app:layout_constraintStart_toEndOf="@id/im_create_task_time"
+        app:layout_constraintTop_toTopOf="@id/im_create_task_time" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
