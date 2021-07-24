@@ -8,4 +8,5 @@ fragment task on task {
         name
         uid
     }
+    created_at
 }

@@ -1,20 +1,27 @@
 package com.jeevan.ui.group
 
+import android.graphics.drawable.ClipDrawable.HORIZONTAL
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.jeevan.R
 import com.jeevan.databinding.FragmentMainGroupBinding
 import com.jeevan.fragment.Task
 import com.jeevan.ui.main.WorkspacesViewModel
+import com.xwray.groupie.GroupieAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
+
 
 @AndroidEntryPoint
-class MainGroupFragment: Fragment(R.layout.fragment_main_group) {
+class MainGroupFragment : Fragment(R.layout.fragment_main_group) {
 
     private val args by navArgs<MainGroupFragmentArgs>()
     private val groupViewModel by hiltNavGraphViewModels<GroupViewModel>(R.id.mainGroupFragment)
@@ -22,8 +29,8 @@ class MainGroupFragment: Fragment(R.layout.fragment_main_group) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val binding = FragmentMainGroupBinding.bind(view)
-        setupObservers(binding)
         setupViews(binding)
+        setupObservers(binding)
     }
 
     private fun setupViews(binding: FragmentMainGroupBinding) {
@@ -31,6 +38,9 @@ class MainGroupFragment: Fragment(R.layout.fragment_main_group) {
             val action = MainGroupFragmentDirections.addTask(args.groupId)
             findNavController().navigate(action)
         }
+        val itemDecor = DividerItemDecoration(context, HORIZONTAL)
+        binding.rvGroupTask.adapter = GroupieAdapter()
+        binding.rvGroupTask.addItemDecoration(itemDecor)
     }
 
     private fun setupObservers(binding: FragmentMainGroupBinding) {
@@ -68,5 +78,15 @@ class MainGroupFragment: Fragment(R.layout.fragment_main_group) {
         binding.hsvGroupFilter.visibility = View.VISIBLE
         binding.nsvGroupTasks.visibility = View.VISIBLE
         binding.cvGroupAddTask.visibility = View.GONE
+        val adapter = binding.rvGroupTask.adapter as GroupieAdapter
+        lifecycleScope.launch {
+            val user = groupViewModel.user.first()
+            user.getOrNull()?.let {
+                val uid = it.getUid()
+                adapter.replaceAll(list.map {
+                    GroupTaskItem(it to (it.user.uid == uid))
+                })
+            }
+        }
     }
 }

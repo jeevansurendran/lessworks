@@ -6,7 +6,7 @@
       "Default GraphQL Endpoint": {
         "url": "https://ata.hasura.app/v1/graphql",
         "headers": {
-          "x-hasura-admin-secret": "**Add your x-hasura-admin-key here**"
+          "x-hasura-admin-secret": "lCQjGurNMnXi8ILYNreZTHVkpSNOnwFIkLKiG6JCZ0Q4CU0EKFFa65TFuB4MdsSp"
         },
         "introspect": false
       }
