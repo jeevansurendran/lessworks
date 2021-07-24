@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainGroupFragment: Fragment(R.layout.fragment_main_group) {
 
-    private val args: MainGroupFragmentArgs by navArgs()
+    private val args by navArgs<MainGroupFragmentArgs>()
     private val groupViewModel by hiltNavGraphViewModels<GroupViewModel>(R.id.mainGroupFragment)
     private val mainViewModel by activityViewModels<WorkspacesViewModel>()
 
@@ -28,7 +28,7 @@ class MainGroupFragment: Fragment(R.layout.fragment_main_group) {
 
     private fun setupViews(binding: FragmentMainGroupBinding) {
         binding.ibGroupCreateTask.setOnClickListener {
-            val action = MainGroupFragmentDirections.addTask()
+            val action = MainGroupFragmentDirections.addTask(args.groupId)
             findNavController().navigate(action)
         }
     }
@@ -65,8 +65,8 @@ class MainGroupFragment: Fragment(R.layout.fragment_main_group) {
             binding.cvGroupAddTask.visibility = View.VISIBLE
             return
         }
-        binding.hsvGroupFilter.visibility = View.GONE
-        binding.nsvGroupTasks.visibility = View.GONE
-        binding.cvGroupAddTask.visibility = View.VISIBLE
+        binding.hsvGroupFilter.visibility = View.VISIBLE
+        binding.nsvGroupTasks.visibility = View.VISIBLE
+        binding.cvGroupAddTask.visibility = View.GONE
     }
 }

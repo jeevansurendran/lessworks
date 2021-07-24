@@ -198,7 +198,7 @@
             android:layout_gravity="bottom|end"
             android:layout_marginEnd="@dimen/size_l"
             android:layout_marginBottom="@dimen/size_l"
-            android:padding="@dimen/size_s"
+            android:padding="@dimen/size_n"
             app:srcCompat="@drawable/ic_plus" />
 
     </FrameLayout>

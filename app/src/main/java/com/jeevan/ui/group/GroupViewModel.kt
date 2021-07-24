@@ -18,7 +18,7 @@ class GroupViewModel @Inject constructor(
         savedStateHandle["group_id"]!!
     }
 
-    private fun getGroupData() {
+    fun getGroupData() {
         viewModelScope.launch {
             _group.value = getGroup(groupId)!!
         }

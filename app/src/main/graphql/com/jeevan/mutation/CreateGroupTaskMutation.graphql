@@ -1,0 +1,7 @@
+mutation CreateGroupTaskMutation($groupId:uuid!, $task: task_insert_input!) {
+    group: insert_group_task_one(object: {group_id: $groupId, task: {data: $task}}) {
+        task {
+            ...task
+        }
+    }
+}
