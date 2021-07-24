@@ -4,10 +4,10 @@ import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.coroutines.await
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
-import com.jeevan.CreateUserMutation
-import com.jeevan.GetWorkspaceCountQuery
 import com.jeevan.di.MainDispatcher
 import com.jeevan.domain.UseCase
+import com.jeevan.mutation.CreateUserMutation
+import com.jeevan.queries.GetWorkspaceCountQuery
 import com.jeevan.utils.Constants
 import com.jeevan.utils.suspendAndWait
 import kotlinx.coroutines.CoroutineDispatcher

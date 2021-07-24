@@ -1,0 +1,11 @@
+fragment task on task {
+    deadline
+    id
+    priority
+    status
+    text
+    user {
+        name
+        uid
+    }
+}

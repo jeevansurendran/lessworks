@@ -1,11 +1,10 @@
 package com.jeevan.data.user
 
-import com.jeevan.SearchUserQuery
 import com.jeevan.data.user.model.FirebaseUserInfo
 import com.jeevan.data.user.source.FirebaseUserDataSource
 import com.jeevan.data.user.source.UserDataSource
+import com.jeevan.queries.SearchUserQuery
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class UserRepository

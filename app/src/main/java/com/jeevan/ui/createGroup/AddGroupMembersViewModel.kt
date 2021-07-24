@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jeevan.SearchUserQuery
 import com.jeevan.domain.user.SearchUsersUseCase
 import com.jeevan.domain.workspace.AddGroupUseCase
 import com.jeevan.fragment.Group
+import com.jeevan.queries.SearchUserQuery
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

@@ -3,9 +3,10 @@ package com.jeevan.data.workspace.source
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.api.Input
 import com.apollographql.apollo.coroutines.await
-import com.jeevan.GetWorkspacesQuery
-import com.jeevan.InsertGroupMutation
 import com.jeevan.fragment.Group
+import com.jeevan.mutation.InsertGroupMutation
+import com.jeevan.queries.GetGroupQuery
+import com.jeevan.queries.GetWorkspacesQuery
 import com.jeevan.type.Group_user_insert_input
 import javax.inject.Inject
 
@@ -24,6 +25,13 @@ class WorkspaceDataSource @Inject constructor(private val apolloClient: ApolloCl
                 users.map { Group_user_insert_input(user_id = Input.fromNullable(it)) })
         ).await()
         return response.data?.insert_group_one?.fragments?.group!!
+    }
+
+    suspend fun getGroup(groupId: String): GetGroupQuery.Group {
+        val response = apolloClient.query(
+            GetGroupQuery(groupId)
+        ).await()
+        return response.data?.group!!
     }
 
 }

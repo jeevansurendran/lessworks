@@ -1,0 +1,10 @@
+query GetGroupQuery($groupId: uuid!) {
+  group: group_by_pk(id: $groupId) {
+    ...group
+    group_tasks {
+      task {
+        ...task
+      }
+    }
+  }
+}

@@ -1,9 +1,9 @@
 package com.jeevan.domain.user
 
-import com.jeevan.SearchUserQuery
 import com.jeevan.data.user.UserRepository
 import com.jeevan.di.IoDispatcher
 import com.jeevan.domain.UseCase
+import com.jeevan.queries.SearchUserQuery
 import com.jeevan.utils.Constants.GROUP_MEMBER_SEARCH_LENGTH
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject

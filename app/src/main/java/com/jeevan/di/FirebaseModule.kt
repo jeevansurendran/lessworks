@@ -17,5 +17,4 @@ object FirebaseModule {
     fun provideFirebaseAuth(): FirebaseAuth {
         return Firebase.auth
     }
-
 }
