@@ -114,7 +114,7 @@ class AddGroupMembersFragment :
     }
 
     private fun openGroup(groupId: String) {
-        val action = AddGroupMembersFragmentDirections.openGroup(groupId)
+        val action = AddGroupMembersFragmentDirections.openNewGroup(groupId)
         findNavController().navigate(action)
     }
 

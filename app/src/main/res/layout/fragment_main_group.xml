@@ -8,8 +8,8 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        app:elevation="0dp"
         style="@style/Widget.MaterialComponents.AppBarLayout.Surface"
+        app:elevation="0dp"
         android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -39,7 +39,7 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginVertical="@dimen/size_vt"
-                    android:layout_marginStart="@dimen/size_l"
+                    android:layout_marginStart="@dimen/size_n"
                     app:cardElevation="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/tv_group_back"
@@ -49,7 +49,7 @@
                         android:id="@+id/im_group_dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        tools:background="@color/red_500" />
+                        android:background="@color/red_500" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
@@ -67,28 +67,20 @@
                     android:id="@+id/tv_member_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/size_s"
-                    android:textSize="@dimen/font_s"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/im_group_info"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="12 Members" />
-
-                <ImageView
-                    android:id="@+id/im_group_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/font_n"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_info" />
+                    tools:text="12 Members" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.MaterialToolbar>
         <HorizontalScrollView
+            android:id="@+id/hsv_group_filter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="@dimen/size_s"
+            android:visibility="gone"
             app:layout_anchorGravity="top|center">
 
             <com.google.android.material.chip.ChipGroup
@@ -124,7 +116,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/nestedScrollView"
+            android:id="@+id/nsv_group_tasks"
             android:visibility="gone"
             android:layout_width="match_parent"
             tools:visibility="visible"
@@ -145,14 +137,14 @@
             android:id="@+id/cv_group_add_task"
             app:cardBackgroundColor="#FDEEEE"
             app:cardElevation="0dp"
-            android:visibility="visible"
+            android:layout_gravity="bottom"
+            android:visibility="gone"
             android:layout_width="match_parent"
             app:cardCornerRadius="16dp"
             android:layout_marginBottom="@dimen/size_s"
             android:layout_marginHorizontal="@dimen/size_s"
             android:layout_height="300dp"
-            android:layout_gravity="bottom"
-            >
+            tools:visibility="visible">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

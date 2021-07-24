@@ -28,7 +28,6 @@ fun Fragment.toast(message: String, length: Int = Toast.LENGTH_LONG) {
 }
 
 // firebase
-@ExperimentalCoroutinesApi
 suspend fun <T> Task<T>.suspendAndWait(): T =
     suspendCancellableCoroutine { continuation ->
         addOnSuccessListener { result ->
