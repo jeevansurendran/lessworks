@@ -55,12 +55,18 @@ class MainWorkspaceFragment: Fragment(R.layout.fragment_main_workspace) {
             it?.let { result ->
                 if(result.isSuccess) {
                     val groupAdapter = binding.rvWorkspaceGroup.adapter as GroupieAdapter
+                    val directAdapter = binding.rvWorkspaceDirect.adapter as GroupieAdapter
                     setLoading(binding, false)
                     result.getOrNull()?.let {
                         binding.tvWorkspaceName.text = it.name
                         groupAdapter.replaceAll(it.groups.map { group ->
-                            GroupItem(group.fragments.group) {
+                            ConnectItem(group.fragments.group.name, "") {
                                 openGroup(group.fragments.group.id as String)
+                            }
+                        })
+                        directAdapter.replaceAll(it.workspace_users.map { direct->
+                            ConnectItem(direct.user.fragments.user.name, "") {
+
                             }
                         })
                     }
@@ -72,6 +78,7 @@ class MainWorkspaceFragment: Fragment(R.layout.fragment_main_workspace) {
     private fun setupListeners(binding: FragmentMainWorkspaceBinding) {
         binding.rvWorkspaces.adapter = GroupieAdapter()
         binding.rvWorkspaceGroup.adapter = GroupieAdapter()
+        binding.rvWorkspaceDirect.adapter = GroupieAdapter()
 
         binding.imWorkspaceGroupAdd.setOnClickListener {
             workspacesViewModel.selectedWorkspace.value?.getOrNull()?.let {

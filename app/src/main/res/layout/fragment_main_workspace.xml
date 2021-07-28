@@ -65,15 +65,76 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Jeevan's Workspace" />
 
+                <LinearLayout
+                    android:id="@+id/ll_group_all"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_el"
+                    android:gravity="center_vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_workspace_name">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginVertical="@dimen/size_vt"
+                        app:cardElevation="0dp">
+
+                        <ImageView
+                            android:id="@+id/im_group_all_logo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/red_200" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/tv_group_all_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/size_s"
+                        android:text="All My Tasks" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_group_drafts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_s"
+                    android:gravity="center_vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_group_all">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginVertical="@dimen/size_vt"
+                        app:cardElevation="0dp">
+
+                        <ImageView
+                            android:id="@+id/im_group_all_drafts"
+                            android:layout_width="match_parent"
+                            android:background="?attr/colorSurface"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_outline_drafts" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/tv_group_all_drafts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/size_s"
+                        android:text="Drafts" />
+                </LinearLayout>
+
                 <TextView
                     android:id="@+id/tv_workspace_group_heading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/size_l"
-                    android:text="Group Tasks"
+                    android:layout_marginTop="@dimen/size_n"
                     android:fontFamily="@font/manrope_bold"
+                    android:text="Group Tasks"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_workspace_name" />
+                    app:layout_constraintTop_toBottomOf="@+id/ll_group_drafts" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_workspace_group"
@@ -96,7 +157,49 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/tv_workspace_group_heading" />
 
+                <TextView
+                    android:id="@+id/tv_workspace_direct_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_n"
+                    android:fontFamily="@font/manrope_bold"
+                    android:text="Direct Tasks"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rv_workspace_group" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_workspace_direct"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_n"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_workspace_direct_heading"
+                    tools:itemCount="4"
+                    tools:listitem="@layout/item_workspace_group" />
+
+                <ImageView
+                    android:id="@+id/im_workspace_direct_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_plus"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_workspace_direct_heading"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_workspace_direct_heading" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_search"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_workspace_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_workspace_name" />
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
-<!--        </androidx.core.widget.NestedScrollView>-->
+
+        <!--        </androidx.core.widget.NestedScrollView>-->
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

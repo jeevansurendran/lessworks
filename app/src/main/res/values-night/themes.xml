@@ -11,6 +11,7 @@
         <item name="android:fontFamily">@font/manrope</item>
         <item name="android:textSize">@dimen/font_m</item>
         <item name="checkboxStyle">@style/Widget.App.CheckBox</item>
+        <item name="android:listDivider">@color/gray_200</item>
     </style>
     <style name="Widget.App.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.CheckBox</item>
