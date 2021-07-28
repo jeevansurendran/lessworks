@@ -12,8 +12,8 @@ class CreateGroupTaskUseCase @Inject constructor(
     @IoDispatcher dispatcher: CoroutineDispatcher,
     private val taskRepository: TaskRepository
 ) :
-    UseCase<Triple<String, String, Date>, Task>(dispatcher) {
-    override suspend fun execute(parameters: Triple<String, String, Date>): Task {
+    UseCase<Triple<String, String, Date?>, Task>(dispatcher) {
+    override suspend fun execute(parameters: Triple<String, String, Date?>): Task {
         return taskRepository.createGroupTask(parameters.first, parameters.second, parameters.third)
     }
 

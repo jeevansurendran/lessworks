@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginVertical="@dimen/size_vt"
     app:cardCornerRadius="8dp"
+    app:strokeColor="?attr/colorSurface"
     app:cardElevation="0dp"
     app:strokeWidth="4dp">
 

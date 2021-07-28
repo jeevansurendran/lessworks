@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 class TaskDataSource @Inject constructor(private val apolloClient: ApolloClient) {
 
-    suspend fun createGroupTask(groupId: String, text: String, deadline: Date): Task {
+    suspend fun createGroupTask(groupId: String, text: String, deadline: Date?): Task {
         val response = apolloClient.mutate(
             CreateGroupTaskMutation(
                 groupId, Task_insert_input(

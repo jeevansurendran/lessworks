@@ -16,7 +16,7 @@ class CreateTaskViewModel @Inject constructor(
     val groupId: String by lazy {
         savedStateHandle["group_id"]!!
     }
-    var deadlineDate: Date = Calendar.getInstance().time
+    var deadlineDate: Date? = null
     private val _task = MutableLiveData<Result<Task>>()
     val task = _task as LiveData<Result<Task>>
 

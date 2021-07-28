@@ -6,7 +6,7 @@ import java.util.*
 import javax.inject.Inject
 
 class TaskRepository @Inject constructor(private val datasource: TaskDataSource) {
-    suspend fun createGroupTask(groupId: String, text: String, deadline: Date): Task {
+    suspend fun createGroupTask(groupId: String, text: String, deadline: Date?): Task {
         return datasource.createGroupTask(groupId, text, deadline)
     }
 
