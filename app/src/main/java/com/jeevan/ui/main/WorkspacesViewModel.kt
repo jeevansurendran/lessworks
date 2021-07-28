@@ -13,15 +13,26 @@ class WorkspacesViewModel @Inject constructor(private val getWorkspaces: GetWork
     ViewModel() {
     private val _workspaces = MutableLiveData<Result<MutableList<GetWorkspacesQuery.Workspace>>?>()
     val workspaces = _workspaces as LiveData<Result<MutableList<GetWorkspacesQuery.Workspace>>?>
+    private val _workspaceId = MutableLiveData<String?>()
+    val workspaceId = _workspaceId as LiveData<String?>
 
-    val selectedWorkspace = workspaces.map {
-        return@map it?.map { it.takeIf { it.isNotEmpty() }?.first() }
+    val selectedWorkspace = workspaceId.map { workspaceId ->
+        return@map workspaces.value?.map {
+            it.takeIf { it.isNotEmpty() }?.find { it.id == workspaceId }
+        }
     }
 
     private fun getWorkspaces() {
         viewModelScope.launch {
-            _workspaces.value = getWorkspaces(Unit).map { it.toMutableList() }
+            val fetchedWorkspace = getWorkspaces(Unit).map { it.toMutableList() }
+            _workspaceId.value = fetchedWorkspace.getOrNull()?.first()?.id as String
+            _workspaces.value = fetchedWorkspace
+            _workspaceId.value = fetchedWorkspace.getOrNull()?.first()?.id as String
         }
+    }
+
+     fun setWorkspaceId(workspaceId: String) {
+        _workspaceId.value = workspaceId
     }
 
     fun addGroup(workspaceId: String, group: Group) {

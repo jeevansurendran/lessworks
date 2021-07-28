@@ -4,14 +4,16 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginVertical="@dimen/size_vt"
-    app:strokeWidth="4dp"
     app:cardCornerRadius="8dp"
-    app:cardElevation="0dp">
+    app:cardElevation="0dp"
+    app:strokeWidth="4dp">
 
     <ImageView
+        android:id="@+id/im_workspace_add"
         android:layout_width="45dp"
-        android:id="@+id/im_workspace_logo"
         android:layout_height="45dp"
         android:layout_margin="4dp"
-        android:background="@color/red_500" />
+        android:background="@color/gray_200"
+        android:padding="@dimen/size_s"
+        android:src="@drawable/ic_plus" />
 </com.google.android.material.card.MaterialCardView>

@@ -7,6 +7,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.jeevan.R
 import com.jeevan.databinding.FragmentMainWorkspaceBinding
+import com.jeevan.queries.GetWorkspacesQuery
 import com.xwray.groupie.GroupieAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,17 +23,30 @@ class MainWorkspaceFragment: Fragment(R.layout.fragment_main_workspace) {
         setupObservers(binding)
     }
 
+    private fun setWorkspaceSelector(
+        workspaceList: List<GetWorkspacesQuery.Workspace>,
+        workspacesAdapter: GroupieAdapter
+    ) {
+        val selectedWorkspaceId = workspacesViewModel.workspaceId.value
+        workspacesAdapter.replaceAll(workspaceList.map {
+            WorkspaceItem(selectedWorkspaceId == it.id, it.id as String) {
+                workspacesViewModel.setWorkspaceId(it)
+                setWorkspaceSelector(workspaceList, workspacesAdapter)
+            }
+        })
+        workspacesAdapter.add(AddWorkspaceItem {
+
+        })
+    }
 
     private fun setupObservers(binding: FragmentMainWorkspaceBinding) {
         workspacesViewModel.workspaces.observe(viewLifecycleOwner) {
             it?.let { result ->
-                if(result.isSuccess) {
+                if (result.isSuccess) {
                     val workspacesAdapter =
                         binding.rvWorkspaces.adapter as GroupieAdapter // not so safe but is ok
                     result.getOrNull()?.let {
-                        workspacesAdapter.replaceAll(it.map {
-                            WorkspaceItem()
-                        })
+                        setWorkspaceSelector(it, workspacesAdapter)
                     }
                 }
             }
