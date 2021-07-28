@@ -114,7 +114,6 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
-
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nsv_group_tasks"
             android:visibility="gone"
@@ -202,7 +201,12 @@
             android:layout_marginBottom="@dimen/size_l"
             android:padding="@dimen/size_n"
             app:srcCompat="@drawable/ic_plus" />
-
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/cpi_group_loading"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:layout_height="wrap_content" />
     </FrameLayout>
 
 

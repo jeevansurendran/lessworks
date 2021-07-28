@@ -41,6 +41,7 @@ class MainGroupFragment : Fragment(R.layout.fragment_main_group) {
         val itemDecor = DividerItemDecoration(context, HORIZONTAL)
         binding.rvGroupTask.adapter = GroupieAdapter()
         binding.rvGroupTask.addItemDecoration(itemDecor)
+        binding.cpiGroupLoading.visibility = View.VISIBLE
     }
 
     private fun setupObservers(binding: FragmentMainGroupBinding) {
@@ -50,8 +51,8 @@ class MainGroupFragment : Fragment(R.layout.fragment_main_group) {
                     binding.tvGroupName.text = it.fragments.group.name
                     binding.tvMemberCount.text = "${it.fragments.group.group_users.size} Members"
                     setupTasks(binding, it.group_tasks.map { it.task.fragments.task })
-
                 }
+                binding.cpiGroupLoading.visibility = View.GONE
             }
         }
         mainViewModel.selectedWorkspace.observe(viewLifecycleOwner) {

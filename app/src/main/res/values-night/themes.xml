@@ -10,5 +10,15 @@
         <item name="android:textColor">@color/gray_700</item>
         <item name="android:fontFamily">@font/manrope</item>
         <item name="android:textSize">@dimen/font_m</item>
+        <item name="checkboxStyle">@style/Widget.App.CheckBox</item>
+    </style>
+    <style name="Widget.App.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.CheckBox</item>
+    </style>
+
+    <style name="ThemeOverlay.App.CheckBox" parent="">
+        <item name="colorOnSurface">@color/red_500</item>
+        <item name="colorSecondary">@color/red_700</item>
+        <item name="colorControlNormal">@color/red_700</item>
     </style>
 </resources>
