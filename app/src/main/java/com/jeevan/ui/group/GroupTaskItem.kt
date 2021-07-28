@@ -6,9 +6,11 @@ import com.jeevan.databinding.ItemTaskBinding
 import com.jeevan.fragment.Task
 import com.jeevan.utils.Formatter
 import com.xwray.groupie.viewbinding.BindableItem
-import java.util.*
 
-class GroupTaskItem(private val pair: Pair<Task, Boolean>) : BindableItem<ItemTaskBinding>() {
+class GroupTaskItem(
+    private val pair: Pair<Task, Boolean>, private val setStatusOnClick: (Boolean) -> (Unit)
+) :
+    BindableItem<ItemTaskBinding>() {
     override fun bind(viewBinding: ItemTaskBinding, position: Int) {
         /**
          * I know it can be done in a single line but these days
@@ -45,6 +47,9 @@ class GroupTaskItem(private val pair: Pair<Task, Boolean>) : BindableItem<ItemTa
             viewBinding.imTaskTime.visibility = View.VISIBLE
             viewBinding.tvTaskDate.visibility = View.VISIBLE
             viewBinding.tvTaskDate.text = Formatter.formatDurationISO(it as String)
+        }
+        viewBinding.cbTaskDone.setOnClickListener {
+            setStatusOnClick(viewBinding.cbTaskDone.isChecked)
         }
 
     }

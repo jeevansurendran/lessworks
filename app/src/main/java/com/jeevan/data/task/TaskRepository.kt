@@ -9,4 +9,8 @@ class TaskRepository @Inject constructor(private val datasource: TaskDataSource)
     suspend fun createGroupTask(groupId: String, text: String, deadline: Date): Task {
         return datasource.createGroupTask(groupId, text, deadline)
     }
+
+    suspend fun updateTaskStatus(taskId: String, status: Boolean): Boolean {
+        return datasource.updateTaskStatus(taskId, status)
+    }
 }

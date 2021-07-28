@@ -70,12 +70,10 @@ class MainGroupFragment : Fragment(R.layout.fragment_main_group) {
 
     private fun setupTasks(binding: FragmentMainGroupBinding, list: List<Task>) {
         if (list.isEmpty()) {
-            binding.hsvGroupFilter.visibility = View.GONE
             binding.nsvGroupTasks.visibility = View.GONE
             binding.cvGroupAddTask.visibility = View.VISIBLE
             return
         }
-        binding.hsvGroupFilter.visibility = View.VISIBLE
         binding.nsvGroupTasks.visibility = View.VISIBLE
         binding.cvGroupAddTask.visibility = View.GONE
         val adapter = binding.rvGroupTask.adapter as GroupieAdapter
@@ -83,10 +81,13 @@ class MainGroupFragment : Fragment(R.layout.fragment_main_group) {
             val user = groupViewModel.user.first()
             user.getOrNull()?.let {
                 val uid = it.getUid()
-                adapter.replaceAll(list.map {
-                    GroupTaskItem(it to (it.user.uid == uid))
+                adapter.replaceAll(list.map {task ->
+                    GroupTaskItem(task to (task.user.uid == uid)) {
+                        groupViewModel.updateGroupTask(task.id as String, it)
+                    }
                 })
             }
         }
     }
+
 }

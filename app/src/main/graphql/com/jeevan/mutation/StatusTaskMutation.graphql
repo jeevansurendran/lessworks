@@ -1,0 +1,5 @@
+mutation StatusTaskMutation($taskId: uuid!, $status: Boolean) {
+    task: update_task_by_pk(pk_columns: {id: $taskId}, _set: {status: $status}) {
+        status
+    }
+}

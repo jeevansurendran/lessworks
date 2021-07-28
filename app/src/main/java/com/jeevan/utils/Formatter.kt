@@ -11,15 +11,17 @@ object Formatter {
     }
 
     fun formatDurationISO(date: String): String {
-        val parsedDate =
-            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault()).parse(date)
+        val isoFormatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
+        isoFormatter.timeZone = TimeZone.getTimeZone("GMT")
+        val parsedDate = isoFormatter.parse(date)
         val formatter = SimpleDateFormat("E, dd MMM, hh:mm a", Locale.getDefault())
         return formatter.format(parsedDate)
     }
 
     fun formatTimeISO(date: String): String {
-        val parsedDate =
-            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault()).parse(date)
+        val isoFormatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
+        isoFormatter.timeZone = TimeZone.getTimeZone("GMT")
+        val parsedDate = isoFormatter.parse(date)
         val formatter = SimpleDateFormat("hh:mm a", Locale.getDefault())
         return formatter.format(parsedDate)
     }
