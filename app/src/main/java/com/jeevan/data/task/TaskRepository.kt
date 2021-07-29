@@ -13,4 +13,9 @@ class TaskRepository @Inject constructor(private val datasource: TaskDataSource)
     suspend fun updateTaskStatus(taskId: String, status: Boolean): Boolean {
         return datasource.updateTaskStatus(taskId, status)
     }
+
+    suspend fun createDirectTask(directId: String,  text: String, deadline: Date?): Task {
+        return datasource.createDirectTask(directId, text, deadline)
+    }
+
 }

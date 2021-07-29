@@ -62,7 +62,7 @@
     </fragment>
     <dialog
         android:id="@+id/mainCreateTaskFragment"
-        android:name="com.jeevan.ui.createTask.MainCreateTaskFragment"
+        android:name="com.jeevan.ui.createTaskGroup.MainCreateTaskFragment"
         android:label="BottomSheetDialogFragment2"
         tools:layout="@layout/fragment_main_create_task" >
         <argument
@@ -73,14 +73,26 @@
         android:id="@+id/mainDirectFragment"
         android:name="com.jeevan.ui.direct.MainDirectFragment"
         android:label="fragment_main_direct"
-        tools:layout="@layout/fragment_main_direct" >
+        tools:layout="@layout/fragment_main_direct">
         <argument
             android:name="workspace_id"
             app:argType="string" />
-        <argument android:name="user_id"
+        <argument
+            android:name="user_id"
             app:argType="string" />
         <argument
             android:name="user_name"
             app:argType="string" />
+        <action
+            android:id="@+id/create_direct_task"
+            app:destination="@id/mainCreateTaskFragment2" />
     </fragment>
+    <dialog
+        tools:layout="@layout/fragment_main_create_task"
+        android:id="@+id/mainCreateTaskFragment2"
+        android:name="com.jeevan.ui.createTaskDirect.MainCreateTaskFragment"
+        android:label="MainCreateTaskFragment" >
+        <argument android:name="direct_id"
+            app:argType="string" />
+    </dialog>
 </navigation>

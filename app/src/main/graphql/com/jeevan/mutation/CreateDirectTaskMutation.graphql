@@ -1,0 +1,7 @@
+mutation CreateDirectTaskMutation($directId:uuid!, $task: task_insert_input!) {
+    direct: insert_direct_task_one(object: {direct_id: $directId, task: {data: $task}}) {
+        task {
+            ...task
+        }
+    }
+}

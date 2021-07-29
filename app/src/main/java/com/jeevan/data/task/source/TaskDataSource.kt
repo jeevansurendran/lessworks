@@ -33,4 +33,17 @@ class TaskDataSource @Inject constructor(private val apolloClient: ApolloClient)
         ).await()
         return response.data?.task?.status!!
     }
+
+    suspend fun createDirectTask(directId: String, text: String, deadline: Date?): Task {
+        val response = apolloClient.mutate(
+            com.jeevan.mutation.CreateDirectTaskMutation(
+                directId,
+                Task_insert_input(
+                    deadline = Input.fromNullable(deadline),
+                    text = Input.fromNullable(text),
+                )
+            )
+        ).await();
+        return response.data?.direct?.task?.fragments?.task!!
+    }
 }

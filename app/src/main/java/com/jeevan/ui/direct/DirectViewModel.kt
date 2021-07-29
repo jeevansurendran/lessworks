@@ -2,6 +2,7 @@ package com.jeevan.ui.direct
 
 import androidx.lifecycle.*
 import com.jeevan.domain.auth.GetUserFlowCase
+import com.jeevan.domain.task.UpdateTaskUseCase
 import com.jeevan.domain.workspace.GetDirectUseCase
 import com.jeevan.fragment.Direct
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,6 +13,7 @@ import javax.inject.Inject
 class DirectViewModel @Inject constructor(
     private val getDirect: GetDirectUseCase,
     private val getUserFlow: GetUserFlowCase,
+    private val updateTask: UpdateTaskUseCase,
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
     private val _direct = MutableLiveData<Result<Direct>>()
@@ -26,9 +28,16 @@ class DirectViewModel @Inject constructor(
         getUserFlow(Unit)
     }
 
-    private fun getDirect() {
+    fun getDirect() {
         viewModelScope.launch {
             _direct.value = getDirect(workspaceId to userId)!!
+        }
+    }
+
+    fun updateDirectTask(taskId: String, status: Boolean) {
+        viewModelScope.launch {
+            updateTask(taskId to status)
+            getDirect()
         }
     }
 

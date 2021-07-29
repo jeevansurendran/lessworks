@@ -6,7 +6,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavArgs
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.jeevan.R
@@ -32,8 +32,11 @@ class MainDirectFragment : Fragment(R.layout.fragment_main_direct) {
 
     private fun setupViews(binding: FragmentMainDirectBinding) {
         binding.ibDirectCreateTask.setOnClickListener {
-//            val action = MainGroupFragmentDirections.addTask(args.groupId)
-//            findNavController().navigate(action)
+            viewModel.direct.value?.getOrNull()?.id?.let {
+                val action = MainDirectFragmentDirections.createDirectTask(it as String)
+                findNavController().navigate(action)
+            }
+
         }
         val itemDecor = DividerItemDecoration(context, ClipDrawable.HORIZONTAL)
         binding.rvDirectTask.adapter = GroupieAdapter()
@@ -68,7 +71,7 @@ class MainDirectFragment : Fragment(R.layout.fragment_main_direct) {
                 val uid = it.getUid()
                 adapter.replaceAll(list.map { task ->
                     GroupTaskItem(task to (task.user.uid == uid)) {
-//                        groupViewModel.updateGroupTask(task.id as String, it)
+                        viewModel.updateDirectTask(task.id as String, it)
                     }
                 })
             }

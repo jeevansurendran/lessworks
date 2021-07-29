@@ -7,7 +7,7 @@
     android:paddingHorizontal="@dimen/size_s"
     android:paddingTop="@dimen/size_s"
     android:paddingBottom="@dimen/size_el"
-    tools:context=".ui.createTask.MainCreateTaskFragment">
+    tools:context=".ui.createTaskGroup.MainCreateTaskFragment">
 
     <com.jeevan.ui.custom.IconButton
         android:id="@+id/ib_create_task_next"

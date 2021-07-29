@@ -1,4 +1,4 @@
-package com.jeevan.ui.createTask
+package com.jeevan.ui.createTaskDirect
 
 import android.os.Bundle
 import android.view.View
@@ -7,6 +7,7 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.jeevan.R
 import com.jeevan.databinding.FragmentMainCreateTaskBinding
 import com.jeevan.ui.custom.BottomSheetDialogFragment2
+import com.jeevan.ui.direct.DirectViewModel
 import com.jeevan.ui.group.GroupViewModel
 import com.jeevan.utils.Formatter
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,9 +17,9 @@ import java.util.*
 class MainCreateTaskFragment : BottomSheetDialogFragment2(R.layout.fragment_main_create_task) {
 
     private val viewModel by hiltNavGraphViewModels<CreateTaskViewModel>(
-        R.id.mainCreateTaskFragment
+        R.id.mainCreateTaskFragment2
     )
-    private val groupViewModel by hiltNavGraphViewModels<GroupViewModel>(R.id.mainGroupFragment)
+    private val directViewModel by hiltNavGraphViewModels<DirectViewModel>(R.id.mainDirectFragment)
     private val datePicker =
         MaterialDatePicker.Builder.datePicker()
             .setTitleText("Set a deadline for your task")
@@ -36,7 +37,7 @@ class MainCreateTaskFragment : BottomSheetDialogFragment2(R.layout.fragment_main
         viewModel.task.observe(viewLifecycleOwner) {
             if (it.isSuccess) {
                 it.getOrNull()?.let {
-                    groupViewModel.getGroupData()
+                    directViewModel.getDirect()
                     dismiss()
                 }
             } else {
