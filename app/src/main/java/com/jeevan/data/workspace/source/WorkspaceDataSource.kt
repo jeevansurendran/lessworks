@@ -3,8 +3,11 @@ package com.jeevan.data.workspace.source
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.api.Input
 import com.apollographql.apollo.coroutines.await
+import com.jeevan.fragment.Direct
 import com.jeevan.fragment.Group
+import com.jeevan.mutation.CreateDirectMutation
 import com.jeevan.mutation.InsertGroupMutation
+import com.jeevan.queries.DirectTaskQuery
 import com.jeevan.queries.GetGroupQuery
 import com.jeevan.queries.GetWorkspacesQuery
 import com.jeevan.type.Group_user_insert_input
@@ -33,5 +36,32 @@ class WorkspaceDataSource @Inject constructor(private val apolloClient: ApolloCl
         ).await()
         return response.data?.group!!
     }
+
+    private suspend fun addDirect(workspaceId: String, userId1: String, userId2: String): Direct {
+        val response = apolloClient.mutate(
+            CreateDirectMutation(
+                workspaceId,
+                Input.fromNullable(userId1),
+                Input.fromNullable(userId2)
+            )
+        ).await()
+        return response.data?.insert_direct_workspace_user_one?.direct?.fragments?.direct!!
+    }
+
+    suspend fun getDirect(workspaceId: String, userId1: String, userId2: String): Direct {
+        val response = apolloClient.query(
+            DirectTaskQuery(
+                workspaceId,
+                user1 = Input.fromNullable(userId1),
+                user2 = Input.fromNullable(userId2)
+            )
+        ).await()
+        if (response.data?.direct_workspace_user?.size!! == 0) {
+            return addDirect(workspaceId, userId1, userId2)
+        }
+
+        return response.data?.direct_workspace_user?.get(0)?.direct?.fragments?.direct!!
+    }
+
 
 }

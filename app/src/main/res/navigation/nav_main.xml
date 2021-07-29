@@ -16,6 +16,9 @@
         <action
             android:id="@+id/open_group"
             app:destination="@id/mainGroupFragment" />
+        <action
+            android:id="@+id/open_direct"
+            app:destination="@id/mainDirectFragment" />
     </fragment>
     <dialog
         android:id="@+id/mainCreateGroupFragment"
@@ -66,4 +69,18 @@
             android:name="group_id"
             app:argType="string" />
     </dialog>
+    <fragment
+        android:id="@+id/mainDirectFragment"
+        android:name="com.jeevan.ui.direct.MainDirectFragment"
+        android:label="fragment_main_direct"
+        tools:layout="@layout/fragment_main_direct" >
+        <argument
+            android:name="workspace_id"
+            app:argType="string" />
+        <argument android:name="user_id"
+            app:argType="string" />
+        <argument
+            android:name="user_name"
+            app:argType="string" />
+    </fragment>
 </navigation>

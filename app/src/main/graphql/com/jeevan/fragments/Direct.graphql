@@ -1,0 +1,8 @@
+fragment direct on direct {
+    id
+    direct_tasks {
+        task {
+            ...task
+        }
+    }
+}

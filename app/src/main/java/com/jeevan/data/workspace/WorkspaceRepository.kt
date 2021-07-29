@@ -1,6 +1,7 @@
 package com.jeevan.data.workspace
 
 import com.jeevan.data.workspace.source.WorkspaceDataSource
+import com.jeevan.fragment.Direct
 import com.jeevan.fragment.Group
 import com.jeevan.queries.GetGroupQuery
 import com.jeevan.queries.GetWorkspacesQuery
@@ -17,5 +18,9 @@ class WorkspaceRepository @Inject constructor(private val workspaceDataSource: W
 
     suspend fun getGroup(groupId: String): GetGroupQuery.Group {
         return workspaceDataSource.getGroup(groupId)
+    }
+
+    suspend fun getDirect(workspaceId: String, userId1: String, userId2: String): Direct {
+        return workspaceDataSource.getDirect(workspaceId, userId1, userId2);
     }
 }

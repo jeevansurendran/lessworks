@@ -7,6 +7,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.jeevan.R
 import com.jeevan.databinding.FragmentMainWorkspaceBinding
+import com.jeevan.fragment.User
 import com.jeevan.queries.GetWorkspacesQuery
 import com.xwray.groupie.GroupieAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -60,19 +61,24 @@ class MainWorkspaceFragment: Fragment(R.layout.fragment_main_workspace) {
                     result.getOrNull()?.let {
                         binding.tvWorkspaceName.text = it.name
                         groupAdapter.replaceAll(it.groups.map { group ->
-                            ConnectItem(group.fragments.group.name, "") {
+                            ConnectItem(group.fragments.group.name, "", true) {
                                 openGroup(group.fragments.group.id as String)
                             }
                         })
-                        directAdapter.replaceAll(it.workspace_users.map { direct->
-                            ConnectItem(direct.user.fragments.user.name, "") {
-
+                        directAdapter.replaceAll(it.workspace_users.map { direct ->
+                            ConnectItem(direct.user.fragments.user.name, "", false) { view ->
+                                openDirect(it.id as String, direct.user.fragments.user)
                             }
                         })
                     }
                 }
             }
         }
+    }
+
+    private fun openDirect(id: String, user: User) {
+        val action = MainWorkspaceFragmentDirections.openDirect(id, user.uid, user.name)
+        findNavController().navigate(action)
     }
 
     private fun setupListeners(binding: FragmentMainWorkspaceBinding) {
