@@ -42,6 +42,9 @@ class MainGroupFragment : Fragment(R.layout.fragment_main_group) {
         binding.rvGroupTask.adapter = GroupieAdapter()
         binding.rvGroupTask.addItemDecoration(itemDecor)
         binding.cpiGroupLoading.visibility = View.VISIBLE
+        binding.tvGroupBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun setupObservers(binding: FragmentMainGroupBinding) {

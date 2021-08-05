@@ -43,6 +43,9 @@ class MainDirectFragment : Fragment(R.layout.fragment_main_direct) {
         binding.rvDirectTask.addItemDecoration(itemDecor)
         binding.cpiDirectLoading.visibility = View.VISIBLE
         binding.tvDirectName.text = navArgs.userName
+        binding.tvDirectBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun setupObservers(binding: FragmentMainDirectBinding) {
