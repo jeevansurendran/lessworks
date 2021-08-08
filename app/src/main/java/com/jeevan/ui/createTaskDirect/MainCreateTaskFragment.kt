@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
 import com.jeevan.R
 import com.jeevan.databinding.FragmentMainCreateTaskBinding
 import com.jeevan.ui.custom.BottomSheetDialogFragment2
 import com.jeevan.ui.direct.DirectViewModel
 import com.jeevan.ui.group.GroupViewModel
+import com.jeevan.utils.DateTimeUtils
 import com.jeevan.utils.Formatter
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
@@ -24,6 +27,11 @@ class MainCreateTaskFragment : BottomSheetDialogFragment2(R.layout.fragment_main
         MaterialDatePicker.Builder.datePicker()
             .setTitleText("Set a deadline for your task")
             .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+            .build()
+    private val timePicker =
+        MaterialTimePicker.Builder()
+            .setTimeFormat(TimeFormat.CLOCK_24H)
+            .setTitleText("Pick a time")
             .build()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,6 +67,19 @@ class MainCreateTaskFragment : BottomSheetDialogFragment2(R.layout.fragment_main
         datePicker.addOnPositiveButtonClickListener {
             viewModel.deadlineDate = Date(it)
             binding.tvCreateTaskTime.text = Formatter.formatDuration(Date(it))
+            timePicker.show(childFragmentManager, "time-picker")
+        }
+        timePicker.addOnPositiveButtonClickListener {
+            viewModel.deadlineDate = DateTimeUtils.setDateTime(
+                viewModel.deadlineDate ?: Calendar.getInstance().time,
+                timePicker.hour,
+                timePicker.minute
+            )
+            binding.tvCreateTaskTime.text = viewModel.deadlineDate?.let { it1 ->
+                Formatter.formatDuration(
+                    it1
+                )
+            }
         }
         binding.ibCreateTaskNext.setOnClickListener {
             createTask(binding.tilCreateTaskName.editText?.text.toString(), binding)
