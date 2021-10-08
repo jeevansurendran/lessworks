@@ -23,4 +23,8 @@ class WorkspaceRepository @Inject constructor(private val workspaceDataSource: W
     suspend fun getDirect(workspaceId: String, userId1: String, userId2: String): Direct {
         return workspaceDataSource.getDirect(workspaceId, userId1, userId2);
     }
+
+    suspend fun createWorkspace(name: String): String {
+        return workspaceDataSource.createWorkspace(name);
+    }
 }

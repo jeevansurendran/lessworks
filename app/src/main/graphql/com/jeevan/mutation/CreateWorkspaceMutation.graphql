@@ -1,0 +1,5 @@
+mutation CreateWorkspaceMutation($workspaceName: String!) {
+    insert_workspace_one(object: {name: $workspaceName}) {
+        id
+    }
+}

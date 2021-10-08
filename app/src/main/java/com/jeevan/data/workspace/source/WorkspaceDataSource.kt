@@ -6,6 +6,7 @@ import com.apollographql.apollo.coroutines.await
 import com.jeevan.fragment.Direct
 import com.jeevan.fragment.Group
 import com.jeevan.mutation.CreateDirectMutation
+import com.jeevan.mutation.CreateWorkspaceMutation
 import com.jeevan.mutation.InsertGroupMutation
 import com.jeevan.queries.DirectTaskQuery
 import com.jeevan.queries.GetGroupQuery
@@ -61,6 +62,15 @@ class WorkspaceDataSource @Inject constructor(private val apolloClient: ApolloCl
         }
 
         return response.data?.direct_workspace_user?.get(0)?.direct?.fragments?.direct!!
+    }
+
+    suspend fun createWorkspace(name: String): String {
+        val response = apolloClient.mutate(
+            CreateWorkspaceMutation(
+                name
+            )
+        ).await()
+        return response.data?.insert_workspace_one?.id!! as String
     }
 
 

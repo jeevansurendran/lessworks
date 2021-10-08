@@ -22,7 +22,7 @@ class WorkspacesViewModel @Inject constructor(private val getWorkspaces: GetWork
         }
     }
 
-    private fun getWorkspaces() {
+    fun getWorkspaces() {
         viewModelScope.launch {
             val fetchedWorkspace = getWorkspaces(Unit).map { it.toMutableList() }
             _workspaceId.value = fetchedWorkspace.getOrNull()?.first()?.id as String

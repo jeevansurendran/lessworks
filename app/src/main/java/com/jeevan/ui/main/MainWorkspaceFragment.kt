@@ -36,7 +36,7 @@ class MainWorkspaceFragment: Fragment(R.layout.fragment_main_workspace) {
             }
         })
         workspacesAdapter.add(AddWorkspaceItem {
-
+            openCreateWorkspace()
         })
     }
 
@@ -109,6 +109,11 @@ class MainWorkspaceFragment: Fragment(R.layout.fragment_main_workspace) {
 
     private fun openGroup(groupId: String) {
         val action = MainWorkspaceFragmentDirections.openGroup(groupId)
+        findNavController().navigate(action)
+    }
+
+    private fun openCreateWorkspace() {
+        val action = MainWorkspaceFragmentDirections.createWorkspace()
         findNavController().navigate(action)
     }
 
