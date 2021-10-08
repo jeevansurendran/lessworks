@@ -22,7 +22,7 @@ import kotlinx.coroutines.channels.consumeEach
 class AddGroupMembersFragment :
     BottomSheetDialogFragment2(R.layout.fragment_main_add_group_member) {
 
-    val args by navArgs<AddGroupMembersFragmentArgs>()
+    private val args by navArgs<AddGroupMembersFragmentArgs>()
     private val mainViewModel by activityViewModels<WorkspacesViewModel>()
     private val addGroupMembersViewModel by viewModels<AddGroupMembersViewModel>()
 
