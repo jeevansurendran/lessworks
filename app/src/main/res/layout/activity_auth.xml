@@ -10,11 +10,11 @@
         android:id="@+id/tv_auth_copy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get your workplace in track"
+        android:text="Get your workspace in track"
         android:textColor="@color/gray_600"
         android:textSize="@dimen/font_m"
-        app:layout_constraintStart_toStartOf="@+id/tv_auth_less"
-        app:layout_constraintTop_toBottomOf="@+id/tv_auth_less" />
+        app:layout_constraintStart_toStartOf="@id/tv_auth_less"
+        app:layout_constraintTop_toBottomOf="@id/tv_auth_less" />
 
     <TextView
         android:id="@+id/tv_auth_less"
@@ -38,16 +38,16 @@
         android:fontFamily="@font/manrope_semibold"
         android:text="Works"
         android:textSize="@dimen/font_g"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_auth_less"
-        app:layout_constraintStart_toEndOf="@+id/tv_auth_less"
-        app:layout_constraintTop_toTopOf="@+id/tv_auth_less" />
+        app:layout_constraintBottom_toBottomOf="@id/tv_auth_less"
+        app:layout_constraintStart_toEndOf="@id/tv_auth_less"
+        app:layout_constraintTop_toTopOf="@id/tv_auth_less" />
 
     <ImageView
         android:id="@+id/im_auth_man"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_l"
-        app:layout_constraintTop_toBottomOf="@+id/tv_auth_copy"
+        app:layout_constraintTop_toBottomOf="@id/tv_auth_copy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +63,7 @@
         android:textSize="@dimen/font_h"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/im_auth_man"
+        app:layout_constraintTop_toBottomOf="@id/im_auth_man"
         app:layout_constraintVertical_bias="0.2" />
 
     <androidx.cardview.widget.CardView
@@ -78,7 +78,7 @@
         app:cardCornerRadius="999dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_auth_one_step">
+        app:layout_constraintTop_toBottomOf="@id/tv_auth_one_step">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -86,27 +86,27 @@
             android:paddingVertical="@dimen/size_n">
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/tv_auth_continue_google"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Continue with Google"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/imageView5"
+                app:layout_constraintStart_toEndOf="@id/im_auth_google_logo"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/im_auth_google_logo"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginEnd="@dimen/size_n"
-                app:layout_constraintBottom_toBottomOf="@+id/textView5"
-                app:layout_constraintEnd_toStartOf="@+id/textView5"
+                app:layout_constraintBottom_toBottomOf="@id/tv_auth_continue_google"
+                app:layout_constraintEnd_toStartOf="@id/tv_auth_continue_google"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView5"
+                app:layout_constraintTop_toTopOf="@id/tv_auth_continue_google"
                 app:srcCompat="@drawable/ic_google_logo" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -133,6 +133,14 @@
         android:textColor="@color/gray_600"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mcv_auth_google" />
+        app:layout_constraintTop_toBottomOf="@id/mcv_auth_google" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="12dp"
+        android:background="@color/red_500"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
