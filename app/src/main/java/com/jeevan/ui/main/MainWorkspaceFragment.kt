@@ -9,6 +9,7 @@ import com.jeevan.R
 import com.jeevan.databinding.FragmentMainWorkspaceBinding
 import com.jeevan.fragment.User
 import com.jeevan.queries.GetWorkspacesQuery
+import com.jeevan.utils.toast
 import com.xwray.groupie.GroupieAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -93,6 +94,9 @@ class MainWorkspaceFragment: Fragment(R.layout.fragment_main_workspace) {
             }
 
         }
+        binding.imWorkspaceDirectAdd.setOnClickListener {
+            openWorkspaceShare()
+        }
         setLoading(binding)
 
     }
@@ -115,6 +119,15 @@ class MainWorkspaceFragment: Fragment(R.layout.fragment_main_workspace) {
     private fun openCreateWorkspace() {
         val action = MainWorkspaceFragmentDirections.createWorkspace()
         findNavController().navigate(action)
+    }
+
+    private fun openWorkspaceShare() {
+        workspacesViewModel.workspaceId.value?.let {
+            val action = MainWorkspaceFragmentDirections.shareWorkspaceLink(
+                it
+            )
+            findNavController().navigate(action)
+        } ?: toast("Workspace ID not found, try again later")
     }
 
 }

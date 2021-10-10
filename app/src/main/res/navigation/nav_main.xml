@@ -113,7 +113,7 @@
         android:label="MainShareWorkspaceFragment"
         tools:layout="@layout/fragment_main_share_workspace">
         <argument
-            android:name="workspaceId"
+            android:name="workspace_id"
             app:argType="string" />
     </dialog>
 </navigation>

@@ -54,7 +54,7 @@ class MainShareWorkspaceFragment :
 
     private fun shareWorkspaceUrl(url: String, expires_at: String, workspaceName: String) {
         val text = "You have been invited to workspace '$workspaceName'." +
-                " Use the below link to join the workspace. Link expires " +
+                " Use the below link to join the workspace.\n\nLink expires " +
                 "by ${Formatter.formatDurationISO(expires_at)}.\n\n\nJoin now: $url"
 
         val intent = Intent().apply {

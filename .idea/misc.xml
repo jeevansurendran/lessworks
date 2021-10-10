@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_timer.xml" value="0.21217105263157895" />
         <entry key="app/src/main/res/layout/activity_auth.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.2" />

@@ -62,6 +62,7 @@
         tools:text="https://ata.xy/workspace/" />
 
     <Button
+        style="@style/Widget.MaterialComponents.Button"
         android:id="@+id/btn_share_workspace_share"
         android:layout_width="0dp"
         android:enabled="false"

@@ -10,6 +10,7 @@ import com.google.firebase.dynamiclinks.ktx.socialMetaTagParameters
 import com.jeevan.BuildConfig
 import com.jeevan.utils.Constants
 import com.jeevan.utils.Constants.SHARE_DESC
+import com.jeevan.utils.Constants.SHARE_IMAGE
 import com.jeevan.utils.Constants.SHARE_TITLE
 import com.jeevan.utils.suspendAndWait
 import javax.inject.Inject
@@ -33,6 +34,7 @@ class DynamicLinkSource
             socialMetaTagParameters {
                 title = SHARE_TITLE
                 description = SHARE_DESC
+                imageUrl = Uri.parse(SHARE_IMAGE)
             }
         }.suspendAndWait()
         return shortLink.shortLink
