@@ -22,6 +22,9 @@
         <action
             android:id="@+id/create_workspace"
             app:destination="@id/mainCreateWorkspaceFragment" />
+        <action
+            android:id="@+id/action_mainWorkspaceFragment_to_mainShareWorkspaceFragment"
+            app:destination="@id/mainShareWorkspaceFragment" />
     </fragment>
     <dialog
         android:id="@+id/mainCreateGroupFragment"
@@ -94,8 +97,9 @@
         tools:layout="@layout/fragment_main_create_task"
         android:id="@+id/mainCreateTaskFragment2"
         android:name="com.jeevan.ui.createTaskDirect.MainCreateTaskFragment"
-        android:label="MainCreateTaskFragment" >
-        <argument android:name="direct_id"
+        android:label="MainCreateTaskFragment">
+        <argument
+            android:name="direct_id"
             app:argType="string" />
     </dialog>
     <dialog
@@ -103,4 +107,9 @@
         android:id="@+id/mainCreateWorkspaceFragment"
         android:name="com.jeevan.ui.createWorkspace.MainCreateWorkspaceFragment"
         android:label="MainCreateWorkspaceFragment" />
+    <dialog
+        android:id="@+id/mainShareWorkspaceFragment"
+        android:name="com.jeevan.ui.shareWorkspace.MainShareWorkspaceFragment"
+        android:label="MainShareWorkspaceFragment"
+        tools:layout="@layout/fragment_main_share_workspace" />
 </navigation>

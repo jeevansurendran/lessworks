@@ -9,7 +9,7 @@ import com.jeevan.utils.Formatter
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
-class SharWorkspaceUseCase @Inject constructor(
+class ShareWorkspaceUseCase @Inject constructor(
     private val dynamicLinkSource: DynamicLinkSource,
     private val workspaceRepository: WorkspaceRepository,
     @IoDispatcher dispatcher: CoroutineDispatcher
