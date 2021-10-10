@@ -62,7 +62,7 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun setupListeners() {
-        binding.btnAuthGoogleSignin.setOnClickListener {
+        binding.mcvAuthGoogle.setOnClickListener {
             try {
                 signIn()
             } catch (e: Exception) {
@@ -74,7 +74,7 @@ class AuthActivity : AppCompatActivity() {
 
     private fun signIn() {
         if (viewModel.signInClicked.compareAndSet(false, true)) {
-            binding.btnAuthGoogleSignin.isEnabled = !viewModel.signInClicked.get()
+            binding.mcvAuthGoogle.isEnabled = !viewModel.signInClicked.get()
             val googleSignInAttempt = googleClient(Unit)
             if (googleSignInAttempt.isSuccess) {
                 val intent = googleSignInAttempt.getOrThrow().signInIntent
@@ -87,7 +87,7 @@ class AuthActivity : AppCompatActivity() {
 
     private fun setSignInEnabled() {
         viewModel.signInClicked.set(false)
-        binding.btnAuthGoogleSignin.isEnabled = true
+        binding.mcvAuthGoogle.isEnabled = true
     }
 
     private fun firebaseAuthWithGoogle(account: GoogleSignInAccount) {

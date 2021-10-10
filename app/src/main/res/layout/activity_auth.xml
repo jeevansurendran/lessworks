@@ -6,37 +6,133 @@
     android:layout_height="match_parent"
     tools:context=".ui.auth.AuthActivity">
 
-    <ImageView
-        android:id="@+id/im_auth_check"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="A red tick of our logo"
-        android:layout_marginStart="@dimen/size_l"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_check_round" />
-
     <TextView
         android:id="@+id/tv_auth_copy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_s"
-        android:text="@string/work_less"
-        android:textSize="@dimen/font_i"
-        app:layout_constraintStart_toStartOf="@id/im_auth_check"
-        app:layout_constraintTop_toBottomOf="@id/im_auth_check" />
+        android:text="Get your workplace in track"
+        android:textColor="@color/gray_600"
+        android:textSize="@dimen/font_m"
+        app:layout_constraintStart_toStartOf="@+id/tv_auth_less"
+        app:layout_constraintTop_toBottomOf="@+id/tv_auth_less" />
 
-    <Button
-        android:id="@+id/btn_auth_google_signin"
+    <TextView
+        android:id="@+id/tv_auth_less"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Continue with google"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_marginStart="@dimen/size_l"
+        android:fontFamily="@font/manrope_semibold"
+        android:text="Less"
+        android:textColor="@color/red_700"
+        android:textSize="@dimen/font_g"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <TextView
+        android:id="@+id/tv_auth_works"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_vs"
+        android:fontFamily="@font/manrope_semibold"
+        android:text="Works"
+        android:textSize="@dimen/font_g"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_auth_less"
+        app:layout_constraintStart_toEndOf="@+id/tv_auth_less"
+        app:layout_constraintTop_toTopOf="@+id/tv_auth_less" />
+
+    <ImageView
+        android:id="@+id/im_auth_man"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_l"
+        app:layout_constraintTop_toBottomOf="@+id/tv_auth_copy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_auth_copy" />
+        app:layout_constraintVertical_bias="0.2"
+        app:srcCompat="@drawable/vect_auth_man" />
+
+    <TextView
+        android:id="@+id/tv_auth_get_started"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_l"
+        android:text="Get Started or Welcome Back"
+        android:textSize="@dimen/font_h"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/im_auth_man"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/mcv_auth_google"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_l"
+        android:layout_marginTop="@dimen/size_l"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="999dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_auth_one_step">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingVertical="@dimen/size_n">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Continue with Google"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imageView5"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/size_n"
+                app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                app:layout_constraintEnd_toStartOf="@+id/textView5"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView5"
+                app:srcCompat="@drawable/ic_google_logo" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_auth_one_step"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="you are just one step away"
+        android:textColor="@color/gray_600"
+        android:textSize="@dimen/font_m"
+        app:layout_constraintStart_toStartOf="@id/tv_auth_get_started"
+        app:layout_constraintTop_toBottomOf="@id/tv_auth_get_started" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_eh"
+        android:layout_marginTop="@dimen/size_l"
+        android:text="by signing below you agree to the terms and conditions"
+        android:textAlignment="center"
+        android:textColor="@color/gray_600"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mcv_auth_google" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
