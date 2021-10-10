@@ -1,0 +1,8 @@
+fragment workspace_token on workspace_token {
+    id
+    workspace_id
+    expires_at
+    workspace {
+        name
+    }
+}

@@ -2,6 +2,8 @@ package com.jeevan.di
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
+import com.google.firebase.dynamiclinks.ktx.dynamicLinks
 import com.google.firebase.ktx.Firebase
 import dagger.Module
 import dagger.Provides
@@ -16,5 +18,11 @@ object FirebaseModule {
     @Provides
     fun provideFirebaseAuth(): FirebaseAuth {
         return Firebase.auth
+    }
+
+    @Singleton
+    @Provides
+    fun provideDynamicLinks(): FirebaseDynamicLinks {
+        return Firebase.dynamicLinks
     }
 }

@@ -394,7 +394,7 @@ type mutation_root {
         where: direct_workspace_user_bool_exp!
     ): direct_workspace_user_mutation_response
     "delete single row from the table: \"direct_workspace_user\""
-    delete_direct_workspace_user_by_pk(direct_id: uuid!, user_id_1: String!, user_id_2: String!, workspace_id: uuid!): direct_workspace_user
+    delete_direct_workspace_user_by_pk(user_id_1: String!, user_id_2: String!, workspace_id: uuid!): direct_workspace_user
     "delete data from the table: \"group\""
     delete_group(
         "filter the rows which have to be deleted"
@@ -437,6 +437,13 @@ type mutation_root {
     ): workspace_mutation_response
     "delete single row from the table: \"workspace\""
     delete_workspace_by_pk(id: uuid!): workspace
+    "delete data from the table: \"workspace_token\""
+    delete_workspace_token(
+        "filter the rows which have to be deleted"
+        where: workspace_token_bool_exp!
+    ): workspace_token_mutation_response
+    "delete single row from the table: \"workspace_token\""
+    delete_workspace_token_by_pk(id: uuid!): workspace_token
     "delete data from the table: \"workspace_user\""
     delete_workspace_user(
         "filter the rows which have to be deleted"
@@ -570,6 +577,20 @@ type mutation_root {
         "on conflict condition"
         on_conflict: workspace_on_conflict
     ): workspace
+    "insert data into the table: \"workspace_token\""
+    insert_workspace_token(
+        "the rows to be inserted"
+        objects: [workspace_token_insert_input!]!,
+        "on conflict condition"
+        on_conflict: workspace_token_on_conflict
+    ): workspace_token_mutation_response
+    "insert a single row into the table: \"workspace_token\""
+    insert_workspace_token_one(
+        "the row to be inserted"
+        object: workspace_token_insert_input!,
+        "on conflict condition"
+        on_conflict: workspace_token_on_conflict
+    ): workspace_token
     "insert data into the table: \"workspace_user\""
     insert_workspace_user(
         "the rows to be inserted"
@@ -705,6 +726,19 @@ type mutation_root {
         _set: workspace_set_input,
         pk_columns: workspace_pk_columns_input!
     ): workspace
+    "update data of the table: \"workspace_token\""
+    update_workspace_token(
+        "sets the columns of the filtered rows to the given values"
+        _set: workspace_token_set_input,
+        "filter the rows which have to be updated"
+        where: workspace_token_bool_exp!
+    ): workspace_token_mutation_response
+    "update single row of the table: \"workspace_token\""
+    update_workspace_token_by_pk(
+        "sets the columns of the filtered rows to the given values"
+        _set: workspace_token_set_input,
+        pk_columns: workspace_token_pk_columns_input!
+    ): workspace_token
     "update data of the table: \"workspace_user\""
     update_workspace_user(
         "sets the columns of the filtered rows to the given values"
@@ -804,7 +838,7 @@ type query_root {
         where: direct_workspace_user_bool_exp
     ): direct_workspace_user_aggregate!
     "fetch data from the table: \"direct_workspace_user\" using primary key columns"
-    direct_workspace_user_by_pk(direct_id: uuid!, user_id_1: String!, user_id_2: String!, workspace_id: uuid!): direct_workspace_user
+    direct_workspace_user_by_pk(user_id_1: String!, user_id_2: String!, workspace_id: uuid!): direct_workspace_user
     "fetch data from the table: \"group\""
     group(
         "distinct select on columns"
@@ -973,6 +1007,34 @@ type query_root {
     ): workspace_aggregate!
     "fetch data from the table: \"workspace\" using primary key columns"
     workspace_by_pk(id: uuid!): workspace
+    "fetch data from the table: \"workspace_token\""
+    workspace_token(
+        "distinct select on columns"
+        distinct_on: [workspace_token_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [workspace_token_order_by!],
+        "filter the rows returned"
+        where: workspace_token_bool_exp
+    ): [workspace_token!]!
+    "fetch aggregated fields from the table: \"workspace_token\""
+    workspace_token_aggregate(
+        "distinct select on columns"
+        distinct_on: [workspace_token_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [workspace_token_order_by!],
+        "filter the rows returned"
+        where: workspace_token_bool_exp
+    ): workspace_token_aggregate!
+    "fetch data from the table: \"workspace_token\" using primary key columns"
+    workspace_token_by_pk(id: uuid!): workspace_token
     "fetch data from the table: \"workspace_user\""
     workspace_user(
         "distinct select on columns"
@@ -1087,7 +1149,7 @@ type subscription_root {
         where: direct_workspace_user_bool_exp
     ): direct_workspace_user_aggregate!
     "fetch data from the table: \"direct_workspace_user\" using primary key columns"
-    direct_workspace_user_by_pk(direct_id: uuid!, user_id_1: String!, user_id_2: String!, workspace_id: uuid!): direct_workspace_user
+    direct_workspace_user_by_pk(user_id_1: String!, user_id_2: String!, workspace_id: uuid!): direct_workspace_user
     "fetch data from the table: \"group\""
     group(
         "distinct select on columns"
@@ -1256,6 +1318,34 @@ type subscription_root {
     ): workspace_aggregate!
     "fetch data from the table: \"workspace\" using primary key columns"
     workspace_by_pk(id: uuid!): workspace
+    "fetch data from the table: \"workspace_token\""
+    workspace_token(
+        "distinct select on columns"
+        distinct_on: [workspace_token_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [workspace_token_order_by!],
+        "filter the rows returned"
+        where: workspace_token_bool_exp
+    ): [workspace_token!]!
+    "fetch aggregated fields from the table: \"workspace_token\""
+    workspace_token_aggregate(
+        "distinct select on columns"
+        distinct_on: [workspace_token_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [workspace_token_order_by!],
+        "filter the rows returned"
+        where: workspace_token_bool_exp
+    ): workspace_token_aggregate!
+    "fetch data from the table: \"workspace_token\" using primary key columns"
+    workspace_token_by_pk(id: uuid!): workspace_token
     "fetch data from the table: \"workspace_user\""
     workspace_user(
         "distinct select on columns"
@@ -1731,6 +1821,50 @@ type workspace_mutation_response {
     returning: [workspace!]!
 }
 
+"columns and relationships of \"workspace_token\""
+type workspace_token {
+    expires_at: timestamptz
+    id: uuid!
+    "An object relationship"
+    workspace: workspace!
+    workspace_id: uuid!
+}
+
+"aggregated selection of \"workspace_token\""
+type workspace_token_aggregate {
+    aggregate: workspace_token_aggregate_fields
+    nodes: [workspace_token!]!
+}
+
+"aggregate fields of \"workspace_token\""
+type workspace_token_aggregate_fields {
+    count(columns: [workspace_token_select_column!], distinct: Boolean): Int!
+    max: workspace_token_max_fields
+    min: workspace_token_min_fields
+}
+
+"aggregate max on columns"
+type workspace_token_max_fields {
+    expires_at: timestamptz
+    id: uuid
+    workspace_id: uuid
+}
+
+"aggregate min on columns"
+type workspace_token_min_fields {
+    expires_at: timestamptz
+    id: uuid
+    workspace_id: uuid
+}
+
+"response of any mutation on the table \"workspace_token\""
+type workspace_token_mutation_response {
+    "number of rows affected by the mutation"
+    affected_rows: Int!
+    "data from the rows affected by the mutation"
+    returning: [workspace_token!]!
+}
+
 "columns and relationships of \"workspace_user\""
 type workspace_user {
     "An object relationship"
@@ -2008,6 +2142,32 @@ enum workspace_select_column {
     name
     "column name"
     owner_id
+}
+
+"unique or primary key constraints on table \"workspace_token\""
+enum workspace_token_constraint {
+    "unique or primary key constraint"
+    token_pkey
+}
+
+"select columns of table \"workspace_token\""
+enum workspace_token_select_column {
+    "column name"
+    expires_at
+    "column name"
+    id
+    "column name"
+    workspace_id
+}
+
+"update columns of table \"workspace_token\""
+enum workspace_token_update_column {
+    "column name"
+    expires_at
+    "column name"
+    id
+    "column name"
+    workspace_id
 }
 
 "update columns of table \"workspace\""
@@ -2299,7 +2459,6 @@ input direct_workspace_user_order_by {
 
 "primary key columns input for table: direct_workspace_user"
 input direct_workspace_user_pk_columns_input {
-    direct_id: uuid!
     user_id_1: String!
     user_id_2: String!
     workspace_id: uuid!
@@ -2881,6 +3040,52 @@ input workspace_set_input {
     id: uuid
     name: String
     owner_id: String
+}
+
+"Boolean expression to filter rows from the table \"workspace_token\". All fields are combined with a logical 'AND'."
+input workspace_token_bool_exp {
+    _and: [workspace_token_bool_exp!]
+    _not: workspace_token_bool_exp
+    _or: [workspace_token_bool_exp!]
+    expires_at: timestamptz_comparison_exp
+    id: uuid_comparison_exp
+    workspace: workspace_bool_exp
+    workspace_id: uuid_comparison_exp
+}
+
+"input type for inserting data into table \"workspace_token\""
+input workspace_token_insert_input {
+    expires_at: timestamptz
+    id: uuid
+    workspace: workspace_obj_rel_insert_input
+    workspace_id: uuid
+}
+
+"on conflict condition type for table \"workspace_token\""
+input workspace_token_on_conflict {
+    constraint: workspace_token_constraint!
+    update_columns: [workspace_token_update_column!]! = []
+    where: workspace_token_bool_exp
+}
+
+"Ordering options when selecting data from \"workspace_token\"."
+input workspace_token_order_by {
+    expires_at: order_by
+    id: order_by
+    workspace: workspace_order_by
+    workspace_id: order_by
+}
+
+"primary key columns input for table: workspace_token"
+input workspace_token_pk_columns_input {
+    id: uuid!
+}
+
+"input type for updating data in table \"workspace_token\""
+input workspace_token_set_input {
+    expires_at: timestamptz
+    id: uuid
+    workspace_id: uuid
 }
 
 "order by aggregate values of table \"workspace_user\""

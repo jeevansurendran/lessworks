@@ -5,9 +5,11 @@ import com.apollographql.apollo.api.Input
 import com.apollographql.apollo.coroutines.await
 import com.jeevan.fragment.Direct
 import com.jeevan.fragment.Group
+import com.jeevan.fragment.Workspace_token
 import com.jeevan.mutation.CreateDirectMutation
 import com.jeevan.mutation.CreateWorkspaceMutation
 import com.jeevan.mutation.InsertGroupMutation
+import com.jeevan.mutation.WorkspaceShareTokenMutation
 import com.jeevan.queries.DirectTaskQuery
 import com.jeevan.queries.GetGroupQuery
 import com.jeevan.queries.GetWorkspacesQuery
@@ -71,6 +73,13 @@ class WorkspaceDataSource @Inject constructor(private val apolloClient: ApolloCl
             )
         ).await()
         return response.data?.insert_workspace_one?.id!! as String
+    }
+
+    suspend fun createShareToken(workspaceId: String): Workspace_token {
+        val response = apolloClient.mutate(
+            WorkspaceShareTokenMutation(workspaceId)
+        ).await()
+        return response.data?.insert_workspace_token_one?.fragments?.workspace_token!!
     }
 
 

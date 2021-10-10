@@ -3,6 +3,7 @@ package com.jeevan.data.workspace
 import com.jeevan.data.workspace.source.WorkspaceDataSource
 import com.jeevan.fragment.Direct
 import com.jeevan.fragment.Group
+import com.jeevan.fragment.Workspace_token
 import com.jeevan.queries.GetGroupQuery
 import com.jeevan.queries.GetWorkspacesQuery
 import javax.inject.Inject
@@ -21,10 +22,14 @@ class WorkspaceRepository @Inject constructor(private val workspaceDataSource: W
     }
 
     suspend fun getDirect(workspaceId: String, userId1: String, userId2: String): Direct {
-        return workspaceDataSource.getDirect(workspaceId, userId1, userId2);
+        return workspaceDataSource.getDirect(workspaceId, userId1, userId2)
     }
 
     suspend fun createWorkspace(name: String): String {
-        return workspaceDataSource.createWorkspace(name);
+        return workspaceDataSource.createWorkspace(name)
+    }
+
+    suspend fun createShareToken(id: String): Workspace_token {
+        return workspaceDataSource.createShareToken(id)
     }
 }

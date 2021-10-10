@@ -1,0 +1,5 @@
+mutation WorkspaceShareTokenMutation($id: uuid!) {
+    insert_workspace_token_one(object: {workspace_id:$id}) {
+        ...workspace_token
+    }
+}
