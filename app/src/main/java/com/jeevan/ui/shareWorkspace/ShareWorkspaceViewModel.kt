@@ -1,10 +1,8 @@
 package com.jeevan.ui.shareWorkspace
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.jeevan.domain.share.ShareWorkspaceUseCase
+import com.jeevan.fragment.Workspace_token
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -18,8 +16,8 @@ class ShareWorkspaceViewModel @Inject constructor(
         savedStateHandle["workspace_id"]!!
     }
 
-    private val _shareMessage = MutableLiveData<Result<String>>()
-    val shareMessage = _shareMessage
+    private val _shareMessage = MutableLiveData<Result<Pair<String, Workspace_token>>>()
+    val shareMessage = _shareMessage as LiveData<Result<Pair<String, Workspace_token>>>
 
     init {
         viewModelScope.launch {

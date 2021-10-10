@@ -23,7 +23,7 @@
             android:id="@+id/create_workspace"
             app:destination="@id/mainCreateWorkspaceFragment" />
         <action
-            android:id="@+id/action_mainWorkspaceFragment_to_mainShareWorkspaceFragment"
+            android:id="@+id/share_workspace_link"
             app:destination="@id/mainShareWorkspaceFragment" />
     </fragment>
     <dialog
@@ -111,5 +111,9 @@
         android:id="@+id/mainShareWorkspaceFragment"
         android:name="com.jeevan.ui.shareWorkspace.MainShareWorkspaceFragment"
         android:label="MainShareWorkspaceFragment"
-        tools:layout="@layout/fragment_main_share_workspace" />
+        tools:layout="@layout/fragment_main_share_workspace">
+        <argument
+            android:name="workspaceId"
+            app:argType="string" />
+    </dialog>
 </navigation>

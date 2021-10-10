@@ -9,23 +9,14 @@
     android:paddingBottom="@dimen/size_el"
     tools:context=".ui.shareWorkspace.MainShareWorkspaceFragment">
 
-    <com.jeevan.ui.custom.IconButton
-        android:id="@+id/ib_share_workspace_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_forward_ios"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/ib_share_workspace_close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/transparent"
         android:src="@drawable/ic_close"
-        app:layout_constraintBottom_toBottomOf="@id/ib_share_workspace_next"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/ib_share_workspace_next" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_share_workspace_heading"
@@ -73,10 +64,11 @@
     <Button
         android:id="@+id/btn_share_workspace_share"
         android:layout_width="0dp"
+        android:enabled="false"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_el"
         android:fontFamily="@font/manrope_semibold"
-        android:text="Share an URL"
+        android:text="Share URL"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
