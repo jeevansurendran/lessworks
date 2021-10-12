@@ -106,6 +106,10 @@ class AuthActivity : AppCompatActivity() {
     }
 
     companion object {
+        private const val TOKEN_ID = "auth.token.id"
         fun launchAuth(context: Context): Intent = Intent(context, AuthActivity::class.java)
+        fun launchAuth(context: Context, tokenId: String) = launchAuth(context).apply {
+            putExtra(TOKEN_ID, tokenId)
+        }
     }
 }

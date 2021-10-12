@@ -17,6 +17,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
+        private const val TOKEN_ID = "main.token.id"
         fun launchMain(context: Context): Intent = Intent(context, MainActivity::class.java)
+
+        fun launchMain(context: Context, tokenId: String) = Companion.launchMain(context).apply {
+            putExtra(TOKEN_ID, tokenId)
+        }
     }
 }

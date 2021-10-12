@@ -2,6 +2,8 @@ package com.jeevan.di
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.google.firebase.dynamiclinks.ktx.dynamicLinks
 import com.google.firebase.ktx.Firebase
@@ -24,5 +26,11 @@ object FirebaseModule {
     @Provides
     fun provideDynamicLinks(): FirebaseDynamicLinks {
         return Firebase.dynamicLinks
+    }
+
+    @Singleton
+    @Provides
+    fun provideCrashlytics(): FirebaseCrashlytics {
+        return Firebase.crashlytics
     }
 }

@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_s"
         android:fontFamily="@font/manrope_bold"
-        android:text="Add a person"
+
         app:layout_constraintBottom_toBottomOf="@id/ib_share_workspace_close"
         app:layout_constraintStart_toEndOf="@id/ib_share_workspace_close"
         app:layout_constraintTop_toTopOf="@id/ib_share_workspace_close" />
@@ -33,10 +33,10 @@
         android:id="@+id/im_share_workspace_girl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_el"
+        android:layout_marginTop="@dimen/size_n"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_share_workspace_heading"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         app:srcCompat="@drawable/vect_share_girl" />
 
     <TextView
@@ -47,7 +47,7 @@
         android:fontFamily="@font/manrope_bold"
         android:text="Workspace Link"
         android:textSize="@dimen/font_m"
-        app:layout_constraintStart_toStartOf="@id/tv_share_workspace_heading"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/im_share_workspace_girl" />
 
     <TextView
@@ -68,12 +68,22 @@
         android:enabled="false"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_el"
-        android:fontFamily="@font/manrope_semibold"
         android:text="Share URL"
-        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_share_workspace_link" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_n"
+        android:fontFamily="@font/manrope_semibold"
+        android:text="Share URL to automatically add user to your workspace."
+        android:textSize="@dimen/font_l"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_share_workspace_heading" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
