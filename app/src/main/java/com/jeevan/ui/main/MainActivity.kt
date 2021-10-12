@@ -14,13 +14,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+
     }
 
     companion object {
         private const val TOKEN_ID = "main.token.id"
         fun launchMain(context: Context): Intent = Intent(context, MainActivity::class.java)
 
-        fun launchMain(context: Context, tokenId: String) = Companion.launchMain(context).apply {
+        fun launchMain(context: Context, tokenId: String) = launchMain(context).apply {
             putExtra(TOKEN_ID, tokenId)
         }
     }
