@@ -1,0 +1,5 @@
+query GetWorkspaceTokenQuery($id:uuid!) {
+    token: workspace_token_by_pk(id: $id) {
+        ...workspace_token
+    }
+}

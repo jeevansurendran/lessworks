@@ -1,8 +1,11 @@
 package com.jeevan.utils
 
 import java.text.SimpleDateFormat
+import java.time.Instant
 import java.time.format.DateTimeFormatter
+import java.time.temporal.TemporalAccessor
 import java.util.*
+
 
 object Formatter {
 
@@ -25,5 +28,13 @@ object Formatter {
         val parsedDate = isoFormatter.parse(date)
         val formatter = SimpleDateFormat("hh:mm a", Locale.getDefault())
         return formatter.format(parsedDate)
+    }
+
+    fun isExpiredDate(date: String): Boolean {
+        val ta: TemporalAccessor =
+            DateTimeFormatter.ISO_INSTANT.parse(date)
+        val i: Instant = Instant.from(ta)
+        val d = Date.from(i)
+        return d.after(Date())
     }
 }

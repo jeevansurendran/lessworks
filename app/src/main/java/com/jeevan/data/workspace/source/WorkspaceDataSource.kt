@@ -3,6 +3,7 @@ package com.jeevan.data.workspace.source
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.api.Input
 import com.apollographql.apollo.coroutines.await
+import com.jeevan.data.workspace.model.TokenState
 import com.jeevan.fragment.Direct
 import com.jeevan.fragment.Group
 import com.jeevan.fragment.Workspace_token
@@ -12,8 +13,10 @@ import com.jeevan.mutation.InsertGroupMutation
 import com.jeevan.mutation.WorkspaceShareTokenMutation
 import com.jeevan.queries.DirectTaskQuery
 import com.jeevan.queries.GetGroupQuery
+import com.jeevan.queries.GetWorkspaceTokenQuery
 import com.jeevan.queries.GetWorkspacesQuery
 import com.jeevan.type.Group_user_insert_input
+import com.jeevan.utils.Formatter
 import javax.inject.Inject
 
 class WorkspaceDataSource @Inject constructor(private val apolloClient: ApolloClient) {
@@ -80,6 +83,16 @@ class WorkspaceDataSource @Inject constructor(private val apolloClient: ApolloCl
             WorkspaceShareTokenMutation(workspaceId)
         ).await()
         return response.data?.insert_workspace_token_one?.fragments?.workspace_token!!
+    }
+
+    suspend fun addUserToWorkspace(tokenId: String): TokenState {
+        // a little unsafe must be done in backend
+        val response = apolloClient.query(GetWorkspaceTokenQuery(tokenId)).await()
+
+        response.data?.token?.fragments?.workspace_token?.expires_at
+        val isExpired =
+            Formatter.isExpiredDate(response.data?.token?.fragments?.workspace_token?.expires_at as String)
+        return if (isExpired) TokenState.EXPIRED else TokenState.VALID
     }
 
 
