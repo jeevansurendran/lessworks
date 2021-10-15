@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.jeevan.data.token.model.TokenState
 import com.jeevan.databinding.ActivityMainBinding
+import com.jeevan.utils.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,16 +32,17 @@ class MainActivity : AppCompatActivity() {
                             "This Link has expired, please request a new URL from the workspace owner"
                         }
                         TokenState.VALID -> {
-                            "User Added to workspace, Switch to your new workspace."
+                            "User added to workspace, Switch to your new workspace."
                         }
                         TokenState.ALREADY_PRESENT -> {
-                            "User Already present in the workspace."
+                            "User is already added to the workspace."
                         }
                     }
-
                     Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG)
                         .show()
                 }
+            } else if (it.isFailure) {
+                it.exceptionOrNull()?.message?.let { it1 -> toast(it1) }
             }
         }
         intent.getStringExtra(TOKEN_ID)?.let {

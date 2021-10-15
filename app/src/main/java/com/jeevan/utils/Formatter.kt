@@ -1,9 +1,6 @@
 package com.jeevan.utils
 
 import java.text.SimpleDateFormat
-import java.time.Instant
-import java.time.format.DateTimeFormatter
-import java.time.temporal.TemporalAccessor
 import java.util.*
 
 
@@ -31,10 +28,9 @@ object Formatter {
     }
 
     fun isExpiredDate(date: String): Boolean {
-        val ta: TemporalAccessor =
-            DateTimeFormatter.ISO_INSTANT.parse(date)
-        val i: Instant = Instant.from(ta)
-        val d = Date.from(i)
-        return d.after(Date())
+        val isoFormatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
+        isoFormatter.timeZone = TimeZone.getTimeZone("GMT")
+        val d = isoFormatter.parse(date.replace("+00:00", ""))
+        return d.before(Date())
     }
 }
