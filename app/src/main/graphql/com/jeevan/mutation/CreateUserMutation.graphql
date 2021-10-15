@@ -1,6 +1,16 @@
-mutation CreateUserMutation($name: String!, $workspaceName: String!) {
+mutation CreateUserMutation($name: String!, $workspaceName: String!, $userId: String!) {
   insert_user_one(
-    object: { name: $name, workspaces: { data: [{ name: $workspaceName }] } }
+    object: {
+      name: $name
+      workspaces: {
+        data: [
+          {
+            name: $workspaceName
+            workspace_users: { data: [{user_id:$userId}]}
+          }
+        ]
+      }
+    }
     on_conflict: { constraint: users_pkey, update_columns: [name] }
   ) {
     name

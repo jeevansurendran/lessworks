@@ -63,10 +63,11 @@ class WorkspaceDataSource @Inject constructor(private val apolloClient: ApolloCl
         return response.data?.direct_workspace_user?.get(0)?.direct?.fragments?.direct!!
     }
 
-    suspend fun createWorkspace(name: String): String {
+    suspend fun createWorkspace(name: String, userId: String): String {
         val response = apolloClient.mutate(
             CreateWorkspaceMutation(
-                name
+                name,
+                userId
             )
         ).await()
         return response.data?.insert_workspace_one?.id!! as String

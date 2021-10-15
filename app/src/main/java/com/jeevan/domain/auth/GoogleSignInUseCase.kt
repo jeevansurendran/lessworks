@@ -9,10 +9,8 @@ import com.jeevan.domain.UseCase
 import com.jeevan.hardware.network.AuthInterceptor
 import com.jeevan.mutation.CreateUserMutation
 import com.jeevan.queries.GetWorkspaceCountQuery
-import com.jeevan.utils.Constants
 import com.jeevan.utils.suspendAndWait
 import kotlinx.coroutines.CoroutineDispatcher
-import okhttp3.OkHttpClient
 import javax.inject.Inject
 
 class GoogleSignInUseCase @Inject constructor(
@@ -34,7 +32,8 @@ class GoogleSignInUseCase @Inject constructor(
             apolloClient.mutate(
                 CreateUserMutation(
                     name = result.user?.displayName ?: "New User",
-                    workspaceName = "${result?.user?.displayName ?: "Your User"} Workspace"
+                    workspaceName = "${result?.user?.displayName ?: "Your User"} Workspace",
+                    userId = result.user?.uid!!
                 )
             ).await()
         }
