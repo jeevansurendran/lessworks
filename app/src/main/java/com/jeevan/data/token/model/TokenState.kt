@@ -1,4 +1,4 @@
-package com.jeevan.data.workspace.model
+package com.jeevan.data.token.model
 
 enum class TokenState {
     VALID,
