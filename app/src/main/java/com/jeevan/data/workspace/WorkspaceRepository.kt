@@ -32,4 +32,8 @@ class WorkspaceRepository @Inject constructor(private val workspaceDataSource: W
     suspend fun createShareToken(id: String): Workspace_token {
         return workspaceDataSource.createShareToken(id)
     }
+
+    suspend fun addUserToWorkspace(workspaceId: String, userId: String): Boolean {
+        return workspaceDataSource.addUserToWorkspace(workspaceId, userId)
+    }
 }

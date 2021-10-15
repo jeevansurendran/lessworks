@@ -1,0 +1,7 @@
+mutation AddUserToWorkspaceMutation($workspaceId: uuid!, $userId: String!) {
+    user: insert_workspace_user_one(object: {user_id: $userId, workspace_id: $workspaceId}) {
+        user {
+            ...user
+        }
+    }
+}

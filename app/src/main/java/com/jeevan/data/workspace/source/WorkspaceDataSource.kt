@@ -6,10 +6,7 @@ import com.apollographql.apollo.coroutines.await
 import com.jeevan.fragment.Direct
 import com.jeevan.fragment.Group
 import com.jeevan.fragment.Workspace_token
-import com.jeevan.mutation.CreateDirectMutation
-import com.jeevan.mutation.CreateWorkspaceMutation
-import com.jeevan.mutation.InsertGroupMutation
-import com.jeevan.mutation.WorkspaceShareTokenMutation
+import com.jeevan.mutation.*
 import com.jeevan.queries.DirectTaskQuery
 import com.jeevan.queries.GetGroupQuery
 import com.jeevan.queries.GetWorkspacesQuery
@@ -82,7 +79,16 @@ class WorkspaceDataSource @Inject constructor(private val apolloClient: ApolloCl
         return response.data?.insert_workspace_token_one?.fragments?.workspace_token!!
     }
 
+    suspend fun addUserToWorkspace(workspaceId: String, userId: String): Boolean {
+        val response = apolloClient.mutate(AddUserToWorkspaceMutation(workspaceId, userId)).await()
 
+        // need to figure out a better way to handle errors.
+        val errorCode = response.errors?.get(0)?.customAttributes?.get("code")
+        return if (errorCode === "constraint-violation") {
+            false
+        } else response.data?.user?.user?.fragments?.user?.uid == userId
+
+    }
 
 
 }
