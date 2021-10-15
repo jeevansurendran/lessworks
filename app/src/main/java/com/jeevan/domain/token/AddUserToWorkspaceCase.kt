@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
 class AddUserToWorkspaceCase @Inject constructor(
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
     private val workspaceRepository: WorkspaceRepository,
     private val tokenRepository: TokenRepository,
     @IoDispatcher dispatcher: CoroutineDispatcher
