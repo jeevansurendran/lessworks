@@ -64,6 +64,7 @@ class WorkspacesViewModel @Inject constructor(private val getWorkspaces: GetWork
         }
     }
 
+
     // needs to be the last, very imp!
     init {
         getWorkspaces()

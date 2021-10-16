@@ -50,6 +50,7 @@ class MainWorkspaceFragment: Fragment(R.layout.fragment_main_workspace) {
                     result.getOrNull()?.let {
                         setWorkspaceSelector(it, workspacesAdapter)
                     }
+                    binding.srlMainWorkspace.isRefreshing = false
                 }
             }
         }
@@ -96,6 +97,9 @@ class MainWorkspaceFragment: Fragment(R.layout.fragment_main_workspace) {
         }
         binding.imWorkspaceDirectAdd.setOnClickListener {
             openWorkspaceShare()
+        }
+        binding.srlMainWorkspace.setOnRefreshListener {
+            workspacesViewModel.getWorkspaces()
         }
         setLoading(binding)
 
