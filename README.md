@@ -5,7 +5,7 @@ Less works is a simple app that help manage tasks in a workspace more easily. It
 The repository for Lessworks Android App written in Kotlin.
 
 <div>
-  <img align="center" src="imgs/Home.png" alt="Lessworks App screenshot" height="640" width="320">
+  <img align="center" src="imgs/Home.png" alt="Lessworks App screenshot" height="640">
 </div>
 
 # Development Environment
