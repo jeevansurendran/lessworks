@@ -4,6 +4,10 @@ Less works is a simple app that help manage tasks in a workspace more easily. It
 
 The repository for Lessworks Android App written in Kotlin.
 
+<div>
+  <img align="center" src="imgs/Home.png" alt="Lessworks App screenshot" height="640" width="320">
+</div>
+
 # Development Environment
 
 The app is written entirely in Kotlin and uses the Gradle build system.
@@ -21,7 +25,7 @@ We used a Repository layer for handling data operations. Lessworks's data comes 
 We implemented a lightweight domain layer, which sits between the data layer and the presentation layer, and handles discrete pieces of business logic off
 the UI thread.
 
-We used [Navigation component](https://developer.android.com/guide/navigation to simplify into a single Activity app.
+We used [Navigation component](https://developer.android.com/guide/navigation) to simplify into a single Activity app.
 
 Future integrations plan using [Room](https://developer.android.com/jetpack/androidx/releases/room) for storing chat data to avoid network load.
 
